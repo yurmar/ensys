@@ -7,6 +7,7 @@ import { Services, Process, Docs, Contacts, Cta } from './components/Sections';
 import { Footer } from './components/Footer';
 import { EditModal } from './components/EditModal';
 import { AdminBar } from './components/AdminBar';
+import { PrivacyModal } from './components/PrivacyModal';
 import { Login } from './components/Login';
 
 export function App() {
@@ -51,6 +52,7 @@ export function App() {
         <Cta />
       </main>
       <Footer />
+      <PrivacyModal />
       <EditModal />
       <AdminBar />
     </>

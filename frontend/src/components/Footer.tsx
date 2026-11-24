@@ -3,7 +3,7 @@ import { Brand } from './Logo';
 import { EditButton } from './EditButton';
 
 export function Footer() {
-  const { blocks } = useStore();
+  const { blocks, openPrivacy } = useStore();
   const f = blocks.footer ?? {};
   const site = blocks.site ?? {};
   return (
@@ -32,7 +32,7 @@ export function Footer() {
         <div className="footer-bottom">
           <span>{f.copyright}</span>
           {f.credit_href && <span>{f.credit_text} <a href={f.credit_href} target="_blank" rel="noopener noreferrer">{f.credit_label}</a></span>}
-          <a href={f.privacy_href} style={{ textDecoration: 'none' }}>{f.privacy_label}</a>
+          <button type="button" className="link-btn" onClick={() => openPrivacy(true)}>{f.privacy_label}</button>
         </div>
       </div>
     </footer>

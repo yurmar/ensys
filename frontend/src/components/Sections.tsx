@@ -84,11 +84,16 @@ export function Docs() {
 }
 
 export function Contacts() {
-  const { blocks } = useStore();
+  const { blocks, openPrivacy } = useStore();
   const b = blocks.contacts ?? {};
   const f = b.form ?? {};
   const site = blocks.site ?? {};
   const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'fail'>('idle');
+
+  const [before, after] = f.consent_link && f.consent?.includes(f.consent_link) ? (f.consent as string).split(f.consent_link) : [f.consent, null];
+  const consentText = after === null ? before : (
+    <>{before}<button type="button" className="link-btn" onClick={() => openPrivacy(true)}>{f.consent_link}</button>{after}</>
+  );
 
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -124,7 +129,7 @@ export function Contacts() {
           <label className="field form-wide">{f.company_label}<input name="company" autoComplete="organization" maxLength={120} /></label>
           <label className="field form-wide">{f.message_label}<textarea name="message" rows={4} maxLength={650} required placeholder={f.message_placeholder} /></label>
           <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
-          <label className="consent form-wide"><input type="checkbox" required /> <span>{f.consent}</span></label>
+          <label className="consent form-wide"><input type="checkbox" required /> <span>{consentText}</span></label>
           <div className="form-actions form-wide">
             <button className="btn btn-primary" type="submit" disabled={status === 'sending'}>{f.submit} <Arrow /></button>
           </div>

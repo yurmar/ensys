@@ -9,6 +9,8 @@ type Store = {
   schemas: Record<string, Schema>;
   editing: string | null;
   edit: (slug: string | null) => void;
+  privacyOpen: boolean;
+  openPrivacy: (open: boolean) => void;
   save: (slug: string, data: Block) => Promise<void>;
   reload: () => Promise<void>;
   logout: () => Promise<void>;
@@ -24,7 +26,9 @@ export const useStore = () => {
 export function StoreProvider({ children }: { children: ReactNode }) {
   const [content, setContent] = useState<Content | null>(null);
   const [error, setError] = useState('');
-  const [editing, edit] = useState<string | null>(null);
+  const [editing, setEditing] = useState<string | null>(null);
+  const [privacyOpen, openPrivacy] = useState(false);
+  const edit = useCallback((slug: string | null) => { setEditing(slug); if (slug) openPrivacy(false); }, []);
 
   const reload = useCallback(async () => {
     try {
@@ -57,7 +61,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     blocks: content?.blocks ?? {},
     admin: !!content?.admin,
     schemas: content?.schemas ?? {},
-    editing, edit, save, reload, logout,
+    editing, edit, privacyOpen, openPrivacy, save, reload, logout,
   };
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

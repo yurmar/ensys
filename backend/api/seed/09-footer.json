@@ -79,13 +79,8 @@
     },
     {
       "key": "privacy_label",
-      "label": "Ссылка на политику: текст",
+      "label": "Ссылка на политику (открывает окно с текстом)",
       "type": "text"
-    },
-    {
-      "key": "privacy_href",
-      "label": "Ссылка на политику",
-      "type": "url"
     }
   ],
   "data": {
@@ -131,7 +126,6 @@
     "credit_text": "Разработано",
     "credit_label": "studio.plusuy.pro",
     "credit_href": "https://studio.plusuy.pro",
-    "privacy_label": "Политика конфиденциальности",
-    "privacy_href": "#top"
+    "privacy_label": "Политика конфиденциальности"
   }
 }

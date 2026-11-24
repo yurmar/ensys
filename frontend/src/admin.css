@@ -84,3 +84,14 @@
 @media (max-width: 38rem) { .modal-backdrop { padding: 0; align-items: end; } .modal { max-height: 94vh; border-radius: calc(var(--radius) * 2) calc(var(--radius) * 2) 0 0; } .admin-bar-mode { display: none; } }
 .footer-bottom a[target="_blank"] { color: inherit; text-underline-offset: .2em; }
 .footer-bottom a[target="_blank"]:hover { color: var(--white); }
+
+/* Кнопка-ссылка (политика конфиденциальности) и окно документа */
+.link-btn { padding: 0; border: 0; color: inherit; background: none; font: inherit; text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }
+.link-btn:hover { color: var(--blue); }
+.site-footer .link-btn { text-decoration: none; }
+.site-footer .link-btn:hover { color: var(--white); text-decoration: underline; }
+.consent .link-btn { color: var(--blue); }
+.modal-head-tools { display: inline-flex; align-items: center; gap: .5rem; flex: none; }
+.doc-text section + section { margin-top: 1.5rem; }
+.doc-text h3 { margin-bottom: .5rem; font-size: 1.15rem; font-weight: 700; letter-spacing: -.015em; }
+.doc-text p { color: var(--steel); font-size: .975rem; line-height: 1.6; white-space: pre-line; }
