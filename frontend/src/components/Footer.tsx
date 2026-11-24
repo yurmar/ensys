@@ -31,6 +31,7 @@ export function Footer() {
         </div>
         <div className="footer-bottom">
           <span>{f.copyright}</span>
+          {f.credit_href && <span>{f.credit_text} <a href={f.credit_href} target="_blank" rel="noopener noreferrer">{f.credit_label}</a></span>}
           <a href={f.privacy_href} style={{ textDecoration: 'none' }}>{f.privacy_label}</a>
         </div>
       </div>

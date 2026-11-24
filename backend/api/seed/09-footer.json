@@ -63,6 +63,21 @@
       "type": "text"
     },
     {
+      "key": "credit_text",
+      "label": "Разработчик: подпись",
+      "type": "text"
+    },
+    {
+      "key": "credit_label",
+      "label": "Разработчик: название ссылки",
+      "type": "text"
+    },
+    {
+      "key": "credit_href",
+      "label": "Разработчик: ссылка",
+      "type": "url"
+    },
+    {
       "key": "privacy_label",
       "label": "Ссылка на политику: текст",
       "type": "text"
@@ -113,6 +128,9 @@
       }
     ],
     "copyright": "© 2026 ООО «ЭНСИС»",
+    "credit_text": "Разработано",
+    "credit_label": "studio.plusuy.pro",
+    "credit_href": "https://studio.plusuy.pro",
     "privacy_label": "Политика конфиденциальности",
     "privacy_href": "#top"
   }

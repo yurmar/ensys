@@ -82,3 +82,5 @@
 .login-back { color: var(--steel); font-size: .9rem; text-decoration: none; }
 .login-back:hover { color: var(--blue); }
 @media (max-width: 38rem) { .modal-backdrop { padding: 0; align-items: end; } .modal { max-height: 94vh; border-radius: calc(var(--radius) * 2) calc(var(--radius) * 2) 0 0; } .admin-bar-mode { display: none; } }
+.footer-bottom a[target="_blank"] { color: inherit; text-underline-offset: .2em; }
+.footer-bottom a[target="_blank"]:hover { color: var(--white); }
