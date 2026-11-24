@@ -77,6 +77,17 @@ function run_migrations(): array
         $exists->execute([$seed['slug']]);
         if ($exists->fetchColumn()) {
             $updSchema->execute([$seed['title'], $seed['sort'], $schemaJson, $seed['slug']]);
+            // Новые поля из seed дописываем в существующие данные; уже заполненное не трогаем
+            $cur = $pdo->prepare('SELECT data_json FROM blocks WHERE slug = ?');
+            $cur->execute([$seed['slug']]);
+            $have = json_decode((string)$cur->fetchColumn(), true) ?: [];
+            $missing = array_diff_key($seed['data'], $have);
+            if ($missing) {
+                $merged = clean_by_schema($seed['schema'], $have + $missing);
+                $pdo->prepare('UPDATE blocks SET data_json = ? WHERE slug = ?')
+                    ->execute([json_encode($merged, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES), $seed['slug']]);
+                $log[] = 'блок ' . $seed['slug'] . ': добавлены поля ' . implode(', ', array_keys($missing));
+            }
         } else {
             $data = clean_by_schema($seed['schema'], $seed['data']);
             $insert->execute([

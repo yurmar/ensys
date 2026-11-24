@@ -18,21 +18,20 @@ export function Hero() {
       setReduced(mq.matches);
       const v = video.current;
       if (!v) return;
-      v.defaultPlaybackRate = 0.6;
-      v.playbackRate = 0.6;
       if (mq.matches) v.pause(); else v.play().catch(() => setPaused(true));
     };
     apply();
     mq.addEventListener('change', apply);
     return () => mq.removeEventListener('change', apply);
-  }, [h.video_url]);
+  }, [h.video_url, h.video_webm_url]);
 
   return (
     <section className="hero on-dark" id="team" aria-labelledby="hero-title" style={h.poster_url ? { backgroundImage: `url("${h.poster_url}")` } : undefined}>
-      {h.video_url && (
+      {(h.video_url || h.video_webm_url) && (
         <video ref={video} className={shown ? 'is-playing' : ''} autoPlay muted loop playsInline preload="auto" aria-hidden="true"
           onPlay={() => setPaused(false)} onPause={() => setPaused(true)} onPlaying={() => setShown(true)}>
-          <source src={h.video_url} type="video/mp4" />
+          {h.video_webm_url && <source src={h.video_webm_url} type="video/webm" />}
+          {h.video_url && <source src={h.video_url} type="video/mp4" />}
         </video>
       )}
       <EditButton slug="hero" variant="hero" />
@@ -52,7 +51,7 @@ export function Hero() {
           ))}
         </ul>
       </div>
-      {h.video_url && !reduced && (
+      {(h.video_url || h.video_webm_url) && !reduced && (
         <button type="button" className="video-toggle" onClick={() => { const v = video.current; if (!v) return; if (v.paused) v.play().catch(() => {}); else v.pause(); }}>
           {paused ? ui.video_play : ui.video_pause}
         </button>

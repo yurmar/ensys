@@ -44,8 +44,13 @@
       "type": "url"
     },
     {
+      "key": "video_webm_url",
+      "label": "Видео фона: WebM (лёгкий, грузится первым)",
+      "type": "url"
+    },
+    {
       "key": "video_url",
-      "label": "Видео фона",
+      "label": "Видео фона: MP4 (запасной вариант)",
       "type": "url"
     },
     {
@@ -80,6 +85,7 @@
     "btn_primary_href": "#contacts",
     "btn_secondary_label": "Услуги и системы",
     "btn_secondary_href": "#services",
+    "video_webm_url": "/assets/hero.webm",
     "video_url": "/assets/hero.mp4",
     "poster_url": "/assets/hero.jpg",
     "facts": [
