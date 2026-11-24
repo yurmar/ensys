@@ -1,14 +1,11 @@
-# Всё, кроме index.php, закрыто от прямого доступа (config.php, src/, seed/)
-<IfModule mod_authz_core.c>
-  Require all denied
-  <Files "index.php">
-    Require all granted
-  </Files>
-</IfModule>
-<IfModule !mod_authz_core.c>
-  Order deny,allow
-  Deny from all
-  <Files "index.php">
-    Allow from all
-  </Files>
-</IfModule>
+# Нельзя отдавать конфиг напрямую. Каталоги src/ и seed/ закрыты своими .htaccess.
+# (Запрет «на весь каталог» здесь нельзя: проверка доступа идёт до перезаписи /api/* в index.php.)
+<FilesMatch "^config.*\.php$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+  </IfModule>
+</FilesMatch>
