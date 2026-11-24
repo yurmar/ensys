@@ -19,15 +19,19 @@ export function EditModal() {
     edit(null);
   };
 
+  const closeRef = useRef(close);
+  closeRef.current = close;
+
+  // Фокус и блокировка прокрутки — только при открытии окна, а не на каждый ввод символа
   useEffect(() => {
     if (!editing) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     box.current?.focus();
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close(); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeRef.current(); };
     addEventListener('keydown', onKey);
     return () => { document.body.style.overflow = prev; removeEventListener('keydown', onKey); };
-  });
+  }, [editing]);
 
   if (!editing || !schema) return null;
 
