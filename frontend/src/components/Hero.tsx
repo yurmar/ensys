@@ -8,8 +8,9 @@ export function Hero() {
   const h = blocks.hero ?? {};
   const ui = blocks.site?.ui ?? {};
   const video = useRef<HTMLVideoElement>(null);
+  const hasVideo = !!(h.video_url || h.video_webm_url);
   const [paused, setPaused] = useState(false);
-  const [reduced, setReduced] = useState(false);
+  const [reduced, setReduced] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
   const [shown, setShown] = useState(false); // видео показываем только когда оно реально пошло: до этого виден постер
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export function Hero() {
   }, [h.video_url, h.video_webm_url]);
 
   return (
-    <section className="hero on-dark" id="team" aria-labelledby="hero-title" style={h.poster_url ? { backgroundImage: `url("${h.poster_url}")` } : undefined}>
+    <section className="hero on-dark" id="team" aria-labelledby="hero-title" style={h.poster_url && (reduced || !hasVideo) ? { backgroundImage: `url("${h.poster_url}")` } : undefined}>
       {(h.video_url || h.video_webm_url) && (
         <video ref={video} className={shown ? 'is-playing' : ''} autoPlay muted loop playsInline preload="auto" aria-hidden="true"
           onPlay={() => setPaused(false)} onPause={() => setPaused(true)} onPlaying={() => setShown(true)}>
