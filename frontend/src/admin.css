@@ -95,3 +95,7 @@
 .doc-text section + section { margin-top: 1.5rem; }
 .doc-text h3 { margin-bottom: .5rem; font-size: 1.15rem; font-weight: 700; letter-spacing: -.015em; }
 .doc-text p { color: var(--steel); font-size: .975rem; line-height: 1.6; white-space: pre-line; }
+
+/* Видео появляется плавно после старта; до этого виден постер (без «рваного» первого кадра) */
+.hero video { opacity: 0; transition: opacity .8s ease; }
+.hero video.is-playing { opacity: 1; }

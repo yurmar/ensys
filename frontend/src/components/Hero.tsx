@@ -10,6 +10,7 @@ export function Hero() {
   const video = useRef<HTMLVideoElement>(null);
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
+  const [shown, setShown] = useState(false); // видео показываем только когда оно реально пошло: до этого виден постер
 
   useEffect(() => {
     const mq = matchMedia('(prefers-reduced-motion: reduce)');
@@ -29,8 +30,8 @@ export function Hero() {
   return (
     <section className="hero on-dark" id="team" aria-labelledby="hero-title" style={h.poster_url ? { backgroundImage: `url("${h.poster_url}")` } : undefined}>
       {h.video_url && (
-        <video ref={video} autoPlay muted loop playsInline preload="metadata" poster={h.poster_url} aria-hidden="true"
-          onPlay={() => setPaused(false)} onPause={() => setPaused(true)}>
+        <video ref={video} className={shown ? 'is-playing' : ''} autoPlay muted loop playsInline preload="auto" aria-hidden="true"
+          onPlay={() => setPaused(false)} onPause={() => setPaused(true)} onPlaying={() => setShown(true)}>
           <source src={h.video_url} type="video/mp4" />
         </video>
       )}
