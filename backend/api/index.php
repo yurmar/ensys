@@ -4,6 +4,7 @@ declare(strict_types=1);
 require __DIR__ . '/src/bootstrap.php';
 require __DIR__ . '/src/migrate.php';
 
+ini_set('display_errors', '0');
 header('X-Content-Type-Options: nosniff');
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -62,7 +63,8 @@ try {
         $st = db()->prepare('SELECT id, password_hash FROM admins WHERE login = ?');
         $st->execute([trim((string)($in['login'] ?? ''))]);
         $row = $st->fetch();
-        $ok = $row && password_verify((string)($in['password'] ?? ''), $row['password_hash']);
+        // Проверка хэша выполняется всегда, чтобы время ответа не выдавало существование логина
+        $ok = password_verify((string)($in['password'] ?? ''), $row['password_hash'] ?? '$2y$10$abcdefghijklmnopqrstuuAbCdEfGhIjKlMnOpQrStUvWxYz012346') && $row;
         if (!$ok) {
             throttle_hit('login');
             json_out(['error' => 'Неверный логин или пароль'], 401);
@@ -128,7 +130,7 @@ try {
         if ($email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $text = "Имя: $name\r\nТелефон: $phone\r\nОрганизация: $company\r\n\r\n$message";
             @mail($email, '=?UTF-8?B?' . base64_encode('Запрос предложения с сайта') . '?=', $text,
-                "Content-Type: text/plain; charset=UTF-8\r\nFrom: noreply@" . preg_replace('/^www\./', '', $_SERVER['HTTP_HOST'] ?? 'localhost'));
+                "Content-Type: text/plain; charset=UTF-8\r\nFrom: noreply@" . (preg_replace('/[^a-z0-9.-]/', '', strtolower(preg_replace('/^www\./', '', (string)($_SERVER['HTTP_HOST'] ?? '')))) ?: 'localhost'));
         }
         json_out(['ok' => true], 201);
     }

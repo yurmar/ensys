@@ -43,7 +43,7 @@ export function FieldEditor({ fields, value, onChange }: Props) {
               <label className="field" key={f.key}>{f.label}
                 <div className="ed-svg">
                   <textarea rows={4} spellCheck={false} value={v ?? ''} onChange={e => set(f.key, e.target.value)} />
-                  <div className="ed-svg-preview" aria-hidden="true" dangerouslySetInnerHTML={{ __html: v && /^<svg/i.test(v) && !/<script|\son\w+=/i.test(v) ? v : '' }} />
+                  <img className="ed-svg-preview" alt="" src={v ? `data:image/svg+xml;utf8,${encodeURIComponent(v)}` : undefined} />
                 </div>
               </label>
             );
