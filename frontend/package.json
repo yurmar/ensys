@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build && mkdir -p dist/admin && cp dist/index.html dist/admin/index.html",
+    "build": "tsc --noEmit && vite build && mkdir -p dist/enterforadmin && cp dist/index.html dist/enterforadmin/index.html",
     "preview": "vite preview"
   },
   "dependencies": {

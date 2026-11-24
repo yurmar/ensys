@@ -33,7 +33,7 @@ export function App() {
     return () => io.disconnect();
   }, [ready, blocks]);
 
-  if (location.pathname.replace(/\/+$/, '') === '/admin') return <Login />;
+  if (location.pathname.replace(/\/+$/, '') === '/enterforadmin') return <Login />;
   if (error) return <p className="boot-error">Не удалось загрузить сайт: {error}</p>;
   if (!ready) return null;
 

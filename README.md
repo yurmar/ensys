@@ -4,7 +4,7 @@ React (Vite, TypeScript) + PHP 8 (без фреймворка) + MySQL. Весь
 
 ## Структура
 
-- `frontend/` — React-сайт, админка (карандаш у каждого блока → модалка), страница входа `/admin`.
+- `frontend/` — React-сайт, админка (карандаш у каждого блока → модалка), страница входа `/enterforadmin`.
 - `backend/api/` — PHP API (`/api/*`), миграции, `seed/*.json` (начальные данные и схемы блоков).
 - `backend/bin/` — CLI (`cli.php migrate`, `cli.php create-admin`), генератор `config.php` для деплоя.
 - `.github/workflows/deploy.yml` — автодеплой при пуше в `main`.
@@ -19,7 +19,7 @@ php -S 127.0.0.1:8081 -t backend backend/dev-router.php    # API
 cd frontend && pnpm install && pnpm dev                    # сайт на :5180
 ```
 
-Вход: `/admin`. После входа у каждого блока появляется кнопка-карандаш, внизу слева — панель (заявки, выход).
+Вход: `/enterforadmin`. После входа у каждого блока появляется кнопка-карандаш, внизу слева — панель (заявки, выход).
 
 ## Как это устроено
 
