@@ -1,0 +1,86 @@
+{
+  "slug": "services",
+  "title": "Услуги",
+  "sort": 3,
+  "schema": [
+    {
+      "key": "eyebrow",
+      "label": "Надзаголовок",
+      "type": "text"
+    },
+    {
+      "key": "title",
+      "label": "Заголовок",
+      "type": "text"
+    },
+    {
+      "key": "lead",
+      "label": "Вводный текст",
+      "type": "textarea"
+    },
+    {
+      "key": "items",
+      "label": "Карточки услуг",
+      "type": "list",
+      "fields": [
+        {
+          "key": "title",
+          "label": "Название",
+          "type": "text"
+        },
+        {
+          "key": "subtitle",
+          "label": "Расшифровка",
+          "type": "text"
+        },
+        {
+          "key": "icon",
+          "label": "Иконка (SVG)",
+          "type": "svg"
+        },
+        {
+          "key": "points",
+          "label": "Пункты",
+          "type": "strlist"
+        }
+      ]
+    }
+  ],
+  "data": {
+    "eyebrow": "01 — Услуги",
+    "title": "Полный цикл работ на энергообъекте",
+    "lead": "Берём на себя монтаж, наладку и комплектацию, поэтому за результат отвечает одна команда.",
+    "items": [
+      {
+        "title": "СМР",
+        "subtitle": "Строительно-монтажные работы",
+        "icon": "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M8 40h32M12 40V18l12-8 12 8v22M18 40V28h12v12M24 10V4\"/><path d=\"M20 20h8\" stroke=\"#E5131E\"/></svg>",
+        "points": [
+          "Монтаж комплектных трансформаторных подстанций",
+          "Распределительные устройства",
+          "Силовые кабельные трассы"
+        ]
+      },
+      {
+        "title": "ПНР",
+        "subtitle": "Пусконаладочные работы",
+        "icon": "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><rect x=\"6\" y=\"10\" width=\"36\" height=\"26\" rx=\"2\"/><path d=\"M12 28l6-8 6 5 6-9 6 6\"/><path d=\"M16 42h16\" /><circle cx=\"36\" cy=\"16\" r=\"2\" fill=\"#E5131E\" stroke=\"none\"/></svg>",
+        "points": [
+          "Испытания оборудования",
+          "Настройка устройств РЗА, АВР и телемеханики",
+          "Подготовка к вводу в эксплуатацию"
+        ]
+      },
+      {
+        "title": "Поставка",
+        "subtitle": "Комплектация оборудования",
+        "icon": "<svg viewBox=\"0 0 48 48\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M6 14l18-8 18 8v20l-18 8-18-8z\"/><path d=\"M6 14l18 8 18-8M24 22v20\"/><path d=\"M15 10l18 8\" stroke=\"#E5131E\"/></svg>",
+        "points": [
+          "Комплектные трансформаторные подстанции",
+          "Распределительные устройства",
+          "Низковольтные щиты"
+        ]
+      }
+    ]
+  }
+}

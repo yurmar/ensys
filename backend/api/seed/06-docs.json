@@ -1,0 +1,75 @@
+{
+  "slug": "docs",
+  "title": "Гарантии и лицензии",
+  "sort": 6,
+  "schema": [
+    {
+      "key": "eyebrow",
+      "label": "Надзаголовок",
+      "type": "text"
+    },
+    {
+      "key": "title",
+      "label": "Заголовок",
+      "type": "text"
+    },
+    {
+      "key": "lead",
+      "label": "Вводный текст",
+      "type": "textarea"
+    },
+    {
+      "key": "items",
+      "label": "Документы",
+      "type": "list",
+      "fields": [
+        {
+          "key": "title",
+          "label": "Название",
+          "type": "text"
+        },
+        {
+          "key": "text",
+          "label": "Описание",
+          "type": "text"
+        },
+        {
+          "key": "tag",
+          "label": "Метка справа",
+          "type": "text"
+        },
+        {
+          "key": "href",
+          "label": "Ссылка (файл или #contacts)",
+          "type": "url"
+        },
+        {
+          "key": "icon",
+          "label": "Иконка (SVG)",
+          "type": "svg"
+        }
+      ]
+    }
+  ],
+  "data": {
+    "eyebrow": "04 — Гарантии и лицензии",
+    "title": "Работаем по допускам",
+    "lead": "Документы подтверждают право выполнять работы на объектах электроэнергетики. Копии высылаем по запросу.",
+    "items": [
+      {
+        "title": "СРО на строительство",
+        "text": "Членство в саморегулируемой организации",
+        "tag": "Запросить",
+        "href": "#contacts",
+        "icon": "<svg viewBox=\"0 0 52 52\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><path d=\"M12 4h20l10 10v34H12z\"/><path d=\"M32 4v10h10M18 24h16M18 30h16M18 36h10\"/><path d=\"M34 40l3 3 6-7\" stroke=\"#E5131E\" stroke-width=\"2\"/></svg>"
+      },
+      {
+        "title": "Лицензия ЭТД до 500 кВ включительно",
+        "text": "Класс напряжения до 500 кВ",
+        "tag": "Запросить",
+        "href": "#contacts",
+        "icon": "<svg viewBox=\"0 0 52 52\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><path d=\"M12 4h20l10 10v34H12z\"/><path d=\"M32 4v10h10\"/><path d=\"M27 20l-6 10h7l-4 9\" stroke=\"#E5131E\" stroke-width=\"2\"/></svg>"
+      }
+    ]
+  }
+}

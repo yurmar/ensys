@@ -1,0 +1,119 @@
+{
+  "slug": "footer",
+  "title": "Подвал",
+  "sort": 9,
+  "schema": [
+    {
+      "key": "description",
+      "label": "Описание компании",
+      "type": "textarea"
+    },
+    {
+      "key": "links_title",
+      "label": "Заголовок колонки «Разделы»",
+      "type": "text"
+    },
+    {
+      "key": "links",
+      "label": "Ссылки колонки",
+      "type": "list",
+      "fields": [
+        {
+          "key": "label",
+          "label": "Название",
+          "type": "text"
+        },
+        {
+          "key": "href",
+          "label": "Ссылка",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "key": "requisites_title",
+      "label": "Заголовок колонки «Реквизиты»",
+      "type": "text"
+    },
+    {
+      "key": "requisites",
+      "label": "Реквизиты",
+      "type": "list",
+      "fields": [
+        {
+          "key": "label",
+          "label": "Подпись (ИНН, ОГРН…)",
+          "type": "text"
+        },
+        {
+          "key": "value",
+          "label": "Значение",
+          "type": "text"
+        },
+        {
+          "key": "pending",
+          "label": "Значение ещё не заполнено (подсветить)",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "key": "copyright",
+      "label": "Копирайт",
+      "type": "text"
+    },
+    {
+      "key": "privacy_label",
+      "label": "Ссылка на политику: текст",
+      "type": "text"
+    },
+    {
+      "key": "privacy_href",
+      "label": "Ссылка на политику",
+      "type": "url"
+    }
+  ],
+  "data": {
+    "description": "Строительно-монтажные работы, пусконаладка и поставка оборудования для объектов электроэнергетики.",
+    "links_title": "Разделы",
+    "links": [
+      {
+        "label": "Услуги",
+        "href": "#services"
+      },
+      {
+        "label": "Системы",
+        "href": "#systems"
+      },
+      {
+        "label": "Как работаем",
+        "href": "#process"
+      },
+      {
+        "label": "Документы",
+        "href": "#certificates"
+      }
+    ],
+    "requisites_title": "Реквизиты",
+    "requisites": [
+      {
+        "label": "",
+        "value": "ООО «ЭНСИС»",
+        "pending": false
+      },
+      {
+        "label": "ИНН",
+        "value": "0000000000",
+        "pending": true
+      },
+      {
+        "label": "ОГРН",
+        "value": "0000000000000",
+        "pending": true
+      }
+    ],
+    "copyright": "© 2026 ООО «ЭНСИС»",
+    "privacy_label": "Политика конфиденциальности",
+    "privacy_href": "#top"
+  }
+}

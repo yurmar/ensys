@@ -1,0 +1,73 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: frontend/pnpm-lock.yaml
+
+      - name: Build frontend
+        working-directory: frontend
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm build
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Assemble site
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASS: ${{ secrets.DB_PASS }}
+          MIGRATE_TOKEN: ${{ secrets.MIGRATE_TOKEN }}
+          ADMIN_LOGIN: ${{ secrets.ADMIN_LOGIN }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+        run: |
+          mkdir -p site
+          cp -a frontend/dist/. site/
+          cp -a frontend/public/.htaccess site/.htaccess
+          mkdir -p site/api
+          cp -a backend/api/. site/api/
+          rm -f site/api/config.php site/api/config.example.php
+          php backend/bin/make-config.php site/api/config.php
+
+      - name: Upload to server (FTP)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ secrets.FTP_PROTOCOL || 'ftp' }}
+          local-dir: ./site/
+          server-dir: ${{ secrets.FTP_DIR || '/' }}
+          dangerous-clean-slate: false
+
+      - name: Run migrations
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+          MIGRATE_TOKEN: ${{ secrets.MIGRATE_TOKEN }}
+        run: |
+          if [ -z "$SITE_URL" ]; then echo "SITE_URL не задан — миграции пропущены"; exit 0; fi
+          curl --fail-with-body -sS -X POST -H "X-Migrate-Token: $MIGRATE_TOKEN" "$SITE_URL/api/migrate"

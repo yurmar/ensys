@@ -1,0 +1,104 @@
+{
+  "slug": "hero",
+  "title": "Первый экран",
+  "sort": 2,
+  "schema": [
+    {
+      "key": "eyebrow",
+      "label": "Надзаголовок",
+      "type": "text"
+    },
+    {
+      "key": "title",
+      "label": "Заголовок",
+      "type": "text"
+    },
+    {
+      "key": "title_accent",
+      "label": "Выделенная часть заголовка (голубым)",
+      "type": "text"
+    },
+    {
+      "key": "lead",
+      "label": "Вводный текст",
+      "type": "textarea"
+    },
+    {
+      "key": "btn_primary_label",
+      "label": "Кнопка 1: текст",
+      "type": "text"
+    },
+    {
+      "key": "btn_primary_href",
+      "label": "Кнопка 1: ссылка",
+      "type": "url"
+    },
+    {
+      "key": "btn_secondary_label",
+      "label": "Кнопка 2: текст",
+      "type": "text"
+    },
+    {
+      "key": "btn_secondary_href",
+      "label": "Кнопка 2: ссылка",
+      "type": "url"
+    },
+    {
+      "key": "video_url",
+      "label": "Видео фона",
+      "type": "url"
+    },
+    {
+      "key": "poster_url",
+      "label": "Картинка фона",
+      "type": "url"
+    },
+    {
+      "key": "facts",
+      "label": "Показатели внизу",
+      "type": "list",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Значение",
+          "type": "text"
+        },
+        {
+          "key": "label",
+          "label": "Подпись",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "data": {
+    "eyebrow": "СМР · ПНР · Поставка оборудования",
+    "title": "Энергетические системы",
+    "title_accent": "под ключ",
+    "lead": "Строим, налаживаем и комплектуем подстанции и распределительные сети. Один подрядчик от поставки оборудования до ввода объекта в эксплуатацию.",
+    "btn_primary_label": "Запросить предложение",
+    "btn_primary_href": "#contacts",
+    "btn_secondary_label": "Услуги и системы",
+    "btn_secondary_href": "#services",
+    "video_url": "/assets/hero.mp4",
+    "poster_url": "/assets/hero.jpg",
+    "facts": [
+      {
+        "value": "до 500 кВ",
+        "label": "класс напряжения по лицензии"
+      },
+      {
+        "value": "3 в 1",
+        "label": "монтаж, пусконаладка и поставка"
+      },
+      {
+        "value": "6 систем",
+        "label": "РЗА, ПА, связь, ЭТЛ, АСУ ТП, АИИСКУЭ"
+      },
+      {
+        "value": "СРО",
+        "label": "допуск к строительным работам"
+      }
+    ]
+  }
+}

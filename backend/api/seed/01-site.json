@@ -1,0 +1,172 @@
+{
+  "slug": "site",
+  "title": "Шапка и общие данные",
+  "sort": 1,
+  "schema": [
+    {
+      "key": "brand_name",
+      "label": "Название компании (логотип)",
+      "type": "text"
+    },
+    {
+      "key": "brand_sub",
+      "label": "Подпись под названием",
+      "type": "text"
+    },
+    {
+      "key": "email",
+      "label": "Почта",
+      "type": "text"
+    },
+    {
+      "key": "phone",
+      "label": "Телефон (как показывать)",
+      "type": "text"
+    },
+    {
+      "key": "phone_link",
+      "label": "Телефон для ссылки (tel:+7…)",
+      "type": "text"
+    },
+    {
+      "key": "meta_title",
+      "label": "Заголовок вкладки браузера",
+      "type": "text"
+    },
+    {
+      "key": "meta_description",
+      "label": "Описание для поисковиков",
+      "type": "textarea",
+      "max": 300
+    },
+    {
+      "key": "nav",
+      "label": "Меню",
+      "type": "list",
+      "fields": [
+        {
+          "key": "label",
+          "label": "Название",
+          "type": "text"
+        },
+        {
+          "key": "href",
+          "label": "Ссылка (#services)",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "key": "cta_label",
+      "label": "Кнопка в шапке",
+      "type": "text"
+    },
+    {
+      "key": "cta_mobile_label",
+      "label": "Кнопка в шапке на телефоне",
+      "type": "text"
+    },
+    {
+      "key": "cta_href",
+      "label": "Ссылка кнопки",
+      "type": "url"
+    },
+    {
+      "key": "ui",
+      "label": "Служебные подписи",
+      "type": "group",
+      "fields": [
+        {
+          "key": "skip_link",
+          "label": "Ссылка «К содержимому»",
+          "type": "text"
+        },
+        {
+          "key": "menu_label",
+          "label": "Кнопка меню (доступность)",
+          "type": "text"
+        },
+        {
+          "key": "nav_label",
+          "label": "Навигация (доступность)",
+          "type": "text"
+        },
+        {
+          "key": "home_label",
+          "label": "Логотип: ссылка на главную",
+          "type": "text"
+        },
+        {
+          "key": "video_pause",
+          "label": "Видео: пауза",
+          "type": "text"
+        },
+        {
+          "key": "video_play",
+          "label": "Видео: воспроизвести",
+          "type": "text"
+        },
+        {
+          "key": "systems_prev",
+          "label": "Системы: назад",
+          "type": "text"
+        },
+        {
+          "key": "systems_next",
+          "label": "Системы: вперёд",
+          "type": "text"
+        },
+        {
+          "key": "systems_nav",
+          "label": "Системы: навигация",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "data": {
+    "brand_name": "ЭНСИС",
+    "brand_sub": "Энергетические системы",
+    "email": "info@en-sys.ru",
+    "phone": "+7 (000) 000-00-00",
+    "phone_link": "tel:+70000000000",
+    "meta_title": "ЭНСИС — Энергетические системы",
+    "meta_description": "ЭНСИС — строительно-монтажные работы, пусконаладка и поставка оборудования для подстанций и распределительных сетей до 500 кВ.",
+    "nav": [
+      {
+        "label": "Услуги",
+        "href": "#services"
+      },
+      {
+        "label": "Системы",
+        "href": "#systems"
+      },
+      {
+        "label": "Как работаем",
+        "href": "#process"
+      },
+      {
+        "label": "Документы",
+        "href": "#certificates"
+      },
+      {
+        "label": "Контакты",
+        "href": "#contacts"
+      }
+    ],
+    "cta_label": "Запросить КП",
+    "cta_mobile_label": "Заявка",
+    "cta_href": "#contacts",
+    "ui": {
+      "skip_link": "К содержимому",
+      "menu_label": "Меню разделов",
+      "nav_label": "Разделы сайта",
+      "home_label": "ЭНСИС — на главную",
+      "video_pause": "❚❚ Пауза",
+      "video_play": "▶ Видео",
+      "systems_prev": "Предыдущая система",
+      "systems_next": "Следующая система",
+      "systems_nav": "Навигация по карточкам"
+    }
+  }
+}

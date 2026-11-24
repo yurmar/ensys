@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ЭНСИС — Брендбук</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #014793; --blue-700: #023A78; --navy: #0A2240; --navy-900: #071A31;
+  --red: #E5131E; --sky: #C5E2FF; --sky-300: #8FC3F5;
+  --ink: #142233; --steel: #4D6072; --line: #D6E2EE; --paper: #F3F7FB; --white: #fff;
+  --on-dark: #D9E6F2; --on-dark-muted: #9DB3C9;
+  --font: "Onest", "Segoe UI Variable", "Segoe UI", Inter, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --radius: 6px;
+  --side: 17rem;
+  font-family: var(--font); color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-size: 1.0625rem; line-height: 1.6; }
+h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: var(--blue); text-underline-offset: .2em; }
+:focus-visible { outline: 3px solid var(--sky-300); outline-offset: 3px; }
+code, .mono { font-family: var(--mono); font-size: .875em; }
+
+/* Layout */
+.side {
+  position: fixed; inset: 0 auto 0 0; width: var(--side); z-index: 10;
+  display: flex; flex-direction: column; gap: 2rem; padding: 2rem 1.75rem;
+  background: var(--navy-900); color: var(--on-dark-muted); overflow-y: auto;
+}
+.side .logo { display: flex; align-items: center; gap: .7rem; color: var(--white); text-decoration: none; --mark-a: #fff; }
+.side .logo svg { width: 2.75rem; aspect-ratio: 854/599; }
+.side .logo b { font-size: 1.25rem; font-weight: 800; letter-spacing: .02em; }
+.side .logo small { display: block; font-family: var(--mono); font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--on-dark-muted); font-weight: 400; }
+.side nav ol { display: grid; gap: .1rem; counter-reset: n; }
+.side nav a { display: grid; grid-template-columns: 2rem 1fr; padding: .42rem .6rem; border-radius: 4px; color: var(--on-dark-muted); text-decoration: none; font-size: .925rem; }
+.side nav a span { font-family: var(--mono); font-size: .75rem; padding-top: .15rem; }
+.side nav a:hover { color: var(--white); background: rgb(255 255 255 / 6%); }
+.side nav a.active { color: var(--white); background: rgb(255 255 255 / 9%); box-shadow: inset 2px 0 0 var(--red); }
+.side .side-cta { margin-top: auto; display: grid; gap: .5rem; }
+.side .side-cta a { display: flex; justify-content: space-between; padding: .75rem .9rem; border-radius: var(--radius); background: var(--blue); color: var(--white); text-decoration: none; font-weight: 600; font-size: .925rem; }
+.side .side-cta a:hover { background: #0558b5; }
+.side .side-cta p { font-size: .75rem; line-height: 1.4; }
+main { margin-left: var(--side); }
+.wrap { width: min(100% - 6rem, 70rem); margin-inline: auto; }
+
+/* Chapters */
+.chapter { padding-block: clamp(4rem, 8vw, 7rem); border-bottom: 1px solid var(--line); scroll-margin-top: 0; }
+.chapter.dark { background: var(--navy); color: var(--white); border-color: transparent; }
+.ch-head { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem 2rem; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.ch-num { font-family: var(--mono); font-size: .85rem; color: var(--steel); padding-top: .9rem; border-top: 2px solid var(--red); align-self: start; }
+.dark .ch-num { color: var(--on-dark-muted); }
+.ch-title { font-size: clamp(2.4rem, 5vw, 4.25rem); font-weight: 800; line-height: 1; letter-spacing: -.045em; }
+.ch-lead { grid-column: 2; max-width: 48ch; color: var(--steel); font-size: 1.2rem; line-height: 1.5; }
+.dark .ch-lead { color: var(--on-dark); }
+.h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -.025em; line-height: 1.2; margin-bottom: 1rem; }
+.label { font-family: var(--mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--steel); }
+.dark .label { color: var(--on-dark-muted); }
+.sub { margin-top: clamp(3rem, 5vw, 4.5rem); }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+.muted { color: var(--steel); }
+.dark .muted { color: var(--on-dark-muted); }
+.note { padding: 1rem 1.25rem; border-left: 3px solid var(--blue); background: var(--paper); font-size: .95rem; color: var(--ink); }
+.note.warn { border-color: var(--red); }
+.tile { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.tile figcaption { padding: .9rem 1.1rem; border-top: 1px solid var(--line); font-size: .9rem; }
+.tile figcaption b { display: block; font-size: 1rem; }
+.check li, .cross li { position: relative; padding-left: 1.75rem; margin-top: .55rem; }
+.check li::before { content: ""; position: absolute; left: .15rem; top: .5em; width: .5rem; height: .5rem; background: var(--blue); transform: rotate(45deg); }
+.cross li::before { content: "×"; position: absolute; left: .1rem; top: -.05em; color: var(--red); font-weight: 700; font-size: 1.2rem; }
+
+/* Cover */
+.cover {
+  position: relative; isolation: isolate; overflow: hidden; min-height: 100svh; display: grid; align-content: space-between;
+  padding-block: 2.5rem 3rem; color: var(--white);
+  background: var(--navy-900) url("assets/hero.jpg") center / cover;
+}
+.cover::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, rgb(7 26 49 / 97%) 30%, rgb(7 26 49 / 70%) 65%, rgb(1 71 147 / 55%)); }
+.cover-top { display: flex; justify-content: space-between; font-family: var(--mono); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark-muted); }
+.cover-mark { --mark-a: #fff; width: clamp(7rem, 12vw, 10rem); aspect-ratio: 854/599; margin-bottom: 2.5rem; }
+.cover h1 { font-size: clamp(3.5rem, 10vw, 8.5rem); font-weight: 800; letter-spacing: -.05em; line-height: .9; }
+.cover h1 span { display: block; color: var(--sky); font-size: .42em; letter-spacing: -.03em; margin-top: 1rem; font-weight: 700; }
+.cover p { margin-top: 2rem; max-width: 46ch; color: var(--on-dark); font-size: 1.2rem; }
+.cover-bus { display: grid; gap: 10px; margin-top: 3rem; width: min(100%, 34rem); }
+.cover-bus i { display: block; height: 10px; background: var(--white); }
+.cover-bus i:last-child { width: 62%; background: var(--red); }
+
+/* Idea */
+.manifest { font-size: clamp(1.6rem, 3.2vw, 2.6rem); font-weight: 600; line-height: 1.2; letter-spacing: -.03em; max-width: 26ch; }
+.manifest em { font-style: normal; color: var(--blue); }
+.pillars { counter-reset: p; }
+.pillar { padding: 1.75rem; border: 1px solid var(--line); border-radius: var(--radius); }
+.pillar .label { display: block; margin-bottom: 1.25rem; }
+.pillar h4 { font-size: 1.3rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: .5rem; }
+.pillar p { color: var(--steel); font-size: .98rem; }
+.positioning { display: grid; grid-template-columns: 12rem 1fr; border-top: 1px solid var(--line); }
+.positioning > * { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.positioning dt { font-family: var(--mono); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--steel); padding-top: 1.2rem; }
+.positioning dd { margin: 0; font-size: 1.1rem; }
+
+/* Logo */
+.logo-stage { display: grid; place-items: center; min-height: 22rem; padding: 3rem; }
+.lockup { display: inline-flex; align-items: center; gap: 1.1rem; color: var(--blue); }
+.lockup svg { width: 6.5rem; aspect-ratio: 854/599; }
+.lockup b { display: block; font-size: 3rem; font-weight: 800; letter-spacing: .02em; line-height: 1; }
+.lockup small { display: block; margin-top: .45rem; font-family: var(--mono); font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--steel); }
+.on-navy { background: var(--navy); --mark-a: #fff; }
+.on-navy .lockup { color: var(--white); } .on-navy .lockup small { color: var(--on-dark-muted); }
+.on-blue { background: var(--blue); --mark-a: #fff; --mark-b: #fff; }
+.on-blue .lockup { color: var(--white); } .on-blue .lockup small { color: var(--sky); }
+.on-paper { background: var(--paper); }
+.mono-dark { --mark-a: var(--ink); --mark-b: var(--ink); } .mono-dark .lockup { color: var(--ink); }
+.construct { position: relative; display: grid; place-items: center; min-height: 24rem; background:
+  linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 24px 24px, linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 24px 24px, var(--white); }
+.construct-box { position: relative; padding: 3.25rem; outline: 1px dashed var(--red); outline-offset: 0; }
+.construct-box .lockup { outline: 1px solid rgb(1 71 147 / 35%); }
+.construct-box::before, .construct-box::after { position: absolute; font-family: var(--mono); font-size: .75rem; color: var(--red); content: "x"; }
+.construct-box::before { top: 1.2rem; left: 50%; } .construct-box::after { left: 1.2rem; top: 50%; }
+.dont { position: relative; display: grid; place-items: center; min-height: 11rem; background: var(--paper); overflow: hidden; }
+.dont::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top right, transparent calc(50% - 1px), rgb(229 19 30 / 70%) 50%, transparent calc(50% + 1px)); }
+.dont svg { width: 6rem; aspect-ratio: 854/599; }
+.downloads { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+.downloads a { display: inline-flex; align-items: center; gap: .5rem; padding: .55rem .9rem; border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; font-size: .9rem; font-weight: 500; background: var(--white); }
+.downloads a:hover { border-color: var(--blue); }
+
+/* Color */
+.swatches { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-auto-rows: minmax(15rem, auto); gap: 1.25rem; }
+.swatch { display: flex; flex-direction: column; justify-content: space-between; padding: 1.4rem; border-radius: var(--radius); border: 1px solid transparent; }
+.swatch h4 { font-size: 1.4rem; font-weight: 700; letter-spacing: -.02em; }
+.swatch p { font-size: .9rem; opacity: .85; max-width: 32ch; }
+.swatch dl { display: grid; grid-template-columns: auto 1fr; gap: .15rem .9rem; margin: 1rem 0 0; font-family: var(--mono); font-size: .8rem; }
+.swatch dd { margin: 0; }
+.swatch-big { grid-row: span 2; }
+.ratio { display: flex; height: 3rem; border-radius: var(--radius); overflow: hidden; margin-top: 1rem; }
+.ratio span { display: grid; place-items: center; font-family: var(--mono); font-size: .75rem; }
+.contrast { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.contrast th, .contrast td { padding: .7rem .5rem; text-align: left; border-bottom: 1px solid var(--line); }
+.contrast th { font-family: var(--mono); font-size: .75rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--steel); }
+.chip { display: inline-grid; place-items: center; min-width: 5.5rem; padding: .3rem .6rem; border-radius: 4px; font-weight: 600; font-size: .85rem; }
+.ok { color: #0d7a3e; font-weight: 600; } .lim { color: #a15c00; font-weight: 600; }
+
+/* Type */
+.type-specimen { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.25rem; }
+.specimen { padding: 2rem; border-radius: var(--radius); background: var(--paper); }
+.specimen .big { font-size: clamp(5rem, 11vw, 9rem); font-weight: 800; line-height: .9; letter-spacing: -.05em; color: var(--blue); }
+.specimen .abc { margin-top: 1.5rem; font-size: 1.3rem; line-height: 1.45; word-break: break-word; }
+.specimen.mono-s { background: var(--navy); color: var(--white); }
+.specimen.mono-s .big { font-family: var(--mono); font-weight: 500; letter-spacing: -.02em; color: var(--sky); font-size: clamp(3.5rem, 7vw, 6rem); }
+.specimen.mono-s .abc { font-family: var(--mono); font-size: 1.05rem; }
+.scale { border-top: 1px solid var(--line); }
+.scale-row { display: grid; grid-template-columns: 10rem 1fr; align-items: baseline; gap: 2rem; padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
+.scale-row .meta { font-family: var(--mono); font-size: .75rem; color: var(--steel); line-height: 1.5; }
+.t-display { font-size: clamp(2.6rem, 6vw, 5.75rem); font-weight: 800; line-height: .98; letter-spacing: -.045em; }
+.t-h2 { font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 700; line-height: 1.02; letter-spacing: -.04em; }
+.t-h3 { font-size: 2rem; font-weight: 700; line-height: 1.1; letter-spacing: -.03em; }
+.t-lead { font-size: 1.3rem; line-height: 1.5; color: var(--steel); }
+.t-body { font-size: 1.0625rem; line-height: 1.6; }
+.t-eyebrow { font-family: var(--mono); font-size: .8125rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); display: inline-flex; gap: .6rem; align-items: center; }
+.t-eyebrow::before { content: ""; width: 1.5rem; height: 2px; background: var(--red); }
+
+/* Graphic language */
+.motif { display: grid; place-items: center; min-height: 15rem; padding: 2rem; border-radius: var(--radius) var(--radius) 0 0; }
+.bus { display: grid; gap: 8px; width: 80%; }
+.bus i { height: 12px; background: var(--blue); }
+.bus i:nth-child(2) { width: 70%; background: var(--red); }
+.bus i:nth-child(3) { width: 40%; height: 4px; background: var(--sky-300); }
+.nodes { display: flex; align-items: center; width: 85%; }
+.nodes i { flex: none; width: 16px; height: 16px; border: 2px solid var(--blue); background: var(--white); transform: rotate(45deg); }
+.nodes i.r { background: var(--red); border-color: var(--red); }
+.nodes b { flex: 1; height: 2px; background: var(--line); }
+.blueprint { background: var(--navy-900); background-image: linear-gradient(rgb(197 226 255 / 10%) 1px, transparent 1px), linear-gradient(90deg, rgb(197 226 255 / 10%) 1px, transparent 1px); background-size: 24px 24px; }
+.photo { min-height: 15rem; background: url("assets/hero.jpg") center / cover; position: relative; border-radius: var(--radius) var(--radius) 0 0; }
+.photo::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(90deg, rgb(7 26 49 / 92%), rgb(7 26 49 / 30%)); }
+.photo span { position: absolute; z-index: 1; left: 1.5rem; bottom: 1.25rem; color: var(--white); font-size: 1.6rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.05; }
+.icons { display: flex; gap: 1.5rem; color: var(--blue); }
+.icons svg { width: 3.25rem; height: 3.25rem; }
+
+/* Grid */
+.gridviz { position: relative; height: 15rem; border-radius: var(--radius); background: var(--paper); padding: 0 2rem; display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+.gridviz i { background: rgb(229 19 30 / 10%); border-inline: 1px solid rgb(229 19 30 / 25%); }
+.spacing { display: flex; align-items: end; gap: 1rem; flex-wrap: wrap; }
+.spacing div { display: grid; justify-items: center; gap: .5rem; font-family: var(--mono); font-size: .75rem; color: var(--steel); }
+.spacing i { display: block; background: var(--blue); }
+
+/* Components */
+.comp { padding: 2rem; border: 1px solid var(--line); border-radius: var(--radius); }
+.comp.dark-bg { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem; }
+.btn { display: inline-flex; align-items: center; gap: .6rem; min-height: 3.1rem; padding: .7rem 1.25rem; border: 1px solid transparent; border-radius: var(--radius); font: inherit; font-weight: 600; font-size: 1rem; text-decoration: none; cursor: pointer; }
+.btn svg { width: 1.1rem; height: 1.1rem; }
+.btn-primary { background: var(--blue); color: var(--white); } .btn-primary:hover { background: var(--blue-700); }
+.btn-secondary { border-color: var(--line); color: var(--blue); background: var(--white); } .btn-secondary:hover { border-color: var(--blue); }
+.btn-light { background: var(--white); color: var(--blue); }
+.btn-ghost { border-color: rgb(255 255 255 / 45%); color: var(--white); background: transparent; }
+.field { display: grid; gap: .4rem; font-size: .875rem; font-weight: 500; color: var(--steel); }
+.field input { width: 100%; min-height: 3.1rem; padding: .75rem .9rem; border: 1px solid var(--line); border-radius: var(--radius); font: inherit; font-size: 1rem; color: var(--ink); background: var(--paper); }
+.field input.focus { border-color: var(--blue); background: var(--white); box-shadow: 0 0 0 4px rgb(1 71 147 / 14%); }
+.field input.error { border-color: var(--red); background: #fff6f6; }
+.field .err { color: var(--red); font-size: .8rem; }
+.svc { position: relative; padding: 1.75rem; border: 1px solid var(--line); border-radius: var(--radius); }
+.svc::before { content: ""; position: absolute; left: -1px; top: -1px; width: 30%; height: 3px; background: var(--blue); }
+.svc .label { display: block; margin-bottom: 1.2rem; }
+.svc h4 { font-size: 2rem; font-weight: 700; letter-spacing: -.035em; color: var(--blue); line-height: 1.05; }
+.svc h4 small { display: block; margin-top: .35rem; font-size: 1rem; font-weight: 500; letter-spacing: 0; color: var(--ink); }
+.svc ul { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--steel); font-size: .95rem; }
+.svc li { display: grid; grid-template-columns: .75rem 1fr; gap: .6rem; } .svc li + li { margin-top: .4rem; }
+.svc li::before { content: ""; width: .45rem; height: .45rem; margin-top: .5em; background: var(--red); transform: rotate(45deg); }
+.doc { display: grid; grid-template-columns: 2.75rem 1fr auto; align-items: center; gap: 1rem; padding: 1.2rem 1.35rem; border: 1px solid rgb(197 226 255 / 20%); border-radius: var(--radius); background: rgb(255 255 255 / 4%); }
+.doc svg { width: 2.75rem; height: 2.75rem; color: var(--sky); }
+.doc h4 { font-size: 1.15rem; font-weight: 600; } .doc p { font-size: .85rem; color: var(--on-dark-muted); }
+.tagline { font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--sky); }
+.pill { display: inline-block; padding: .3rem .65rem; border: 1px solid rgb(197 226 255 / 30%); border-radius: 999px; font-size: .8125rem; color: var(--on-dark); }
+.sys-demo { display: grid; grid-template-columns: 1fr .78fr 1.6fr; min-height: 13rem; border-radius: var(--radius); overflow: hidden; }
+.sys-demo > div { padding: 1.2rem; background: var(--blue); border-left: 1px solid rgb(197 226 255 / 22%); box-shadow: -18px 0 40px -12px rgb(3 14 28 / 55%); }
+.sys-demo > div:first-child { background: color-mix(in srgb, var(--blue) 86%, var(--navy-900)); border: 0; }
+.sys-demo > div:nth-child(2) { background: color-mix(in srgb, var(--blue) 80%, var(--navy-900)); }
+.sys-demo > div:last-child { position: relative; display: flex; flex-direction: column; justify-content: space-between; }
+.sys-demo > div:last-child::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: var(--red); }
+.sys-demo .mono { color: var(--sky); font-size: .75rem; } .sys-demo h4 { font-size: 1.6rem; font-weight: 700; letter-spacing: -.03em; margin-top: .6rem; }
+
+/* Voice */
+.voice-table { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.voice-table > div { padding: 1.1rem 1.35rem; border-bottom: 1px solid var(--line); }
+.voice-table > div:nth-child(odd) { background: #fff7f7; border-right: 1px solid var(--line); color: #6b2b2e; }
+.voice-table > div:nth-child(even) { background: #f4f9ff; }
+.voice-table > div:nth-last-child(-n+2) { border-bottom: 0; }
+.voice-table .label { display: block; margin-bottom: .2rem; }
+
+/* Applications */
+.mock-stage { display: grid; place-items: center; padding: 2.5rem; min-height: 22rem; background: #E7EDF3; border-radius: var(--radius) var(--radius) 0 0; }
+.bcard { width: 21rem; aspect-ratio: 90/50; border-radius: 6px; box-shadow: 0 20px 40px -20px rgb(10 34 64 / 45%); padding: 1.3rem 1.4rem; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+.bcard.front { background: var(--navy); color: var(--white); --mark-a: #fff; }
+.bcard.back { background: var(--white); color: var(--ink); }
+.bcard svg { width: 3rem; aspect-ratio: 854/599; }
+.bcard .bus-mini { position: absolute; left: 0; bottom: 1.3rem; display: grid; gap: 4px; width: 45%; }
+.bcard .bus-mini i { height: 5px; background: var(--white); } .bcard .bus-mini i:last-child { width: 60%; background: var(--red); }
+.bcard b { font-size: 1.05rem; } .bcard p { font-size: .72rem; color: var(--steel); line-height: 1.45; }
+.bcard .mono { font-size: .68rem; }
+.letter { width: 17rem; aspect-ratio: 210/297; background: var(--white); box-shadow: 0 20px 40px -20px rgb(10 34 64 / 45%); padding: 1.3rem; display: flex; flex-direction: column; font-size: .5rem; color: var(--steel); }
+.letter-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: .7rem; border-bottom: 2px solid var(--blue); }
+.letter-head span { display: flex; align-items: center; gap: .35rem; color: var(--blue); font-weight: 800; font-size: .8rem; }
+.letter-head svg { width: 1.7rem; aspect-ratio: 854/599; }
+.letter .lines { margin-top: 1.4rem; display: grid; gap: .35rem; }
+.letter .lines i { height: 4px; background: #E6ECF2; border-radius: 2px; }
+.letter .foot { margin-top: auto; padding-top: .5rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; }
+.slide { width: 100%; max-width: 30rem; aspect-ratio: 16/9; border-radius: 6px; overflow: hidden; position: relative; color: var(--white); background: var(--navy-900) url("assets/hero.jpg") center / cover; box-shadow: 0 20px 40px -20px rgb(10 34 64 / 45%); --mark-a: #fff; }
+.slide::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(7 26 49 / 95%) 35%, rgb(7 26 49 / 45%)); }
+.slide > * { position: relative; }
+.slide-in { height: 100%; padding: 1.4rem 1.6rem; display: flex; flex-direction: column; justify-content: space-between; }
+.slide svg { width: 2.4rem; aspect-ratio: 854/599; }
+.slide h4 { font-size: 1.7rem; font-weight: 800; letter-spacing: -.04em; line-height: 1; max-width: 12ch; }
+.slide .mono { color: var(--sky); font-size: .65rem; letter-spacing: .08em; text-transform: uppercase; }
+.sig { width: 100%; max-width: 26rem; padding: 1.25rem; background: var(--white); border-radius: 6px; box-shadow: 0 20px 40px -20px rgb(10 34 64 / 35%); font-size: .85rem; }
+.sig-in { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: center; padding-top: .9rem; border-top: 1px solid var(--line); }
+.sig svg { width: 3rem; aspect-ratio: 854/599; }
+.avatar { width: 9rem; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: var(--navy); --mark-a: #fff; box-shadow: 0 20px 40px -20px rgb(10 34 64 / 45%); }
+.avatar svg { width: 5.5rem; aspect-ratio: 854/599; }
+.helmet-row { display: flex; gap: 2.5rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+
+/* Site vision */
+.sitemap { display: grid; gap: .5rem; }
+.sm-row { display: grid; grid-template-columns: 3rem 13rem 1fr; gap: 1rem; align-items: center; padding: 1rem 1.25rem; border-radius: var(--radius); background: rgb(255 255 255 / 5%); border: 1px solid rgb(197 226 255 / 14%); }
+.sm-row .mono { color: var(--sky); }
+.sm-row b { font-size: 1.1rem; }
+.sm-row p { color: var(--on-dark); font-size: .95rem; }
+.sm-row.keep { border-color: var(--red); background: rgb(229 19 30 / 8%); }
+.sm-row .badge { display: inline-block; margin-left: .5rem; padding: .1rem .45rem; border-radius: 3px; background: var(--red); color: var(--white); font-family: var(--mono); font-size: .65rem; letter-spacing: .05em; vertical-align: middle; }
+.compare { width: 100%; border-collapse: collapse; }
+.compare th, .compare td { padding: 1rem .9rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); font-size: .975rem; }
+.compare th { font-family: var(--mono); font-size: .75rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--steel); }
+.compare td:first-child { font-weight: 600; width: 18%; }
+.compare td:nth-child(2) { color: var(--steel); width: 34%; }
+.preview-cta { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: center; padding: 2rem; border-radius: calc(var(--radius) * 2); background: var(--paper); }
+.preview-cta img { width: 100%; border-radius: var(--radius); box-shadow: 0 30px 60px -35px rgb(10 34 64 / 55%); display: block; }
+.preview-shots { display: grid; grid-template-columns: 3fr 1fr; gap: 1.25rem; align-items: end; }
+.preview-shots figure img { width: 100%; display: block; border-radius: var(--radius); border: 1px solid var(--line); }
+.preview-shots figcaption { margin-top: .6rem; font-size: .85rem; color: var(--steel); }
+.ux li { display: grid; grid-template-columns: 2.5rem 1fr; gap: .5rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.ux li .mono { color: var(--red); padding-top: .15rem; }
+.ux b { display: block; }
+.ux p { color: var(--steel); font-size: .95rem; }
+.todo li { display: grid; grid-template-columns: 1.5rem 1fr; gap: .5rem; padding: .65rem 0; border-bottom: 1px solid rgb(255 255 255 / 12%); color: var(--on-dark); }
+.todo li::before { content: ""; width: .9rem; height: .9rem; margin-top: .3rem; border: 1.5px solid var(--sky); border-radius: 3px; }
+footer.end { padding: 3rem 0; color: var(--steel); font-size: .85rem; }
+
+@media (max-width: 68rem) {
+  .side { position: sticky; top: 0; inset: auto; width: auto; flex-direction: row; align-items: center; padding: .8rem 1rem; overflow-x: auto; gap: 1rem; }
+  .side nav ol { display: flex; gap: .2rem; }
+  .side nav a { display: block; white-space: nowrap; padding: .4rem .6rem; font-size: .85rem; }
+  .side nav a span { display: none; }
+  .side .side-cta { display: none; }
+  .side .logo small { display: none; }
+  main { margin-left: 0; }
+  .wrap { width: min(100% - 2.5rem, 70rem); }
+  .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 52rem) {
+  .grid-2, .grid-3, .type-specimen, .preview-cta, .preview-shots, .voice-table { grid-template-columns: 1fr; }
+  .voice-table > div:nth-child(odd) { border-right: 0; }
+  .swatches { grid-template-columns: 1fr 1fr; } .swatch-big { grid-column: 1 / -1; grid-row: auto; }
+  .ch-head { grid-template-columns: 1fr; } .ch-lead { grid-column: 1; }
+  .positioning { grid-template-columns: 1fr; } .positioning dt { padding-bottom: 0; border: 0; }
+  .scale-row { grid-template-columns: 1fr; gap: .5rem; }
+  .sm-row { grid-template-columns: 2.5rem 1fr; } .sm-row p { grid-column: 2; }
+  .compare thead { display: none; } .compare tr { display: grid; padding: .75rem 0; border-bottom: 1px solid var(--line); } .compare td { width: auto !important; border: 0; padding: .25rem 0; }
+  .gridviz { grid-template-columns: repeat(4, 1fr); } .gridviz i:nth-child(n+5) { display: none; }
+  .lockup b { font-size: 2.2rem; } .lockup svg { width: 4.8rem; }
+  .logo-stage { padding: 2rem 1rem; min-height: 16rem; }
+}
+@media (max-width: 30rem) { .grid-4, .swatches { grid-template-columns: 1fr; } .bcard { width: 100%; } }
+@media print {
+  .side { display: none; } main { margin: 0; }
+  .chapter { break-inside: avoid-page; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mark" viewBox="0 0 854 599"><path fill="var(--mark-a,#014793)" fill-rule="evenodd" d="M127.0 598.3C88.4 597.0 38.2 586.0 5.7 571.6L0.0 569.1L0.0 488.7C-0.0 444.5 0.3 408.1 0.6 407.7C1.2 407.2 9.6 413.6 22.5 424.5C61.5 457.5 122.4 470.6 173.0 456.9C206.9 447.7 243.8 421.8 264.8 392.2C266.1 390.5 269.6 387.7 272.8 385.9C275.9 384.1 280.3 381.5 282.5 380.0C287.9 376.4 296.6 371.2 302.0 368.2C304.5 366.9 311.5 362.9 317.7 359.4L328.9 352.9L351.7 367.6C364.2 375.6 381.2 386.5 389.5 391.8C427.4 415.9 424.4 412.9 420.4 424.2C401.5 476.8 349.5 530.7 287.1 562.4C256.4 578.0 225.2 588.2 190.0 594.0C173.7 596.7 146.2 599.3 138.7 598.8C137.0 598.7 131.7 598.5 127.0 598.3ZM702.0 598.3C608.0 594.2 525.1 554.4 471.2 487.7C452.2 464.2 435.7 434.6 431.6 416.8C430.9 413.7 431.8 413.0 456.0 397.6C464.5 392.1 479.1 382.7 488.5 376.7C497.9 370.6 508.0 364.1 511.0 362.2C514.0 360.3 518.4 357.4 520.8 355.8L525.1 353.0L538.3 360.7C545.6 364.9 556.5 371.4 562.5 375.0C568.5 378.7 576.5 383.3 580.1 385.3C585.1 388.1 588.4 391.0 593.1 396.8C629.8 441.2 671.8 462.2 724.0 462.2C769.6 462.3 805.3 448.2 844.8 414.8L854.0 406.9L853.8 488.5L853.5 570.1L842.1 574.6C798.6 591.6 747.1 600.3 702.0 598.3ZM406.4 379.4C386.5 366.7 371.6 357.1 332.0 331.3C322.4 325.0 302.8 312.3 288.5 303.0L262.5 286.0L175.2 286.0L88.0 286.0L88.0 257.0L88.0 228.0L184.3 228.0L280.6 228.0L285.6 231.2C291.9 235.2 349.0 271.3 390.6 297.6C408.3 308.8 423.8 318.4 425.2 319.0C428.0 320.3 427.4 320.6 458.4 301.1C467.6 295.3 479.2 288.0 484.0 285.0C488.8 282.0 499.8 275.0 508.3 269.5C516.9 264.0 527.5 257.2 531.9 254.5C536.3 251.8 547.6 244.7 556.9 238.8L573.9 228.0L669.9 228.0L766.0 228.0L766.0 257.0L766.0 286.0L678.8 286.2L591.5 286.5L574.5 297.6C565.1 303.7 553.0 311.5 547.5 315.0C542.0 318.5 528.5 327.2 517.5 334.3C506.5 341.5 489.9 352.3 480.5 358.3C471.1 364.3 461.2 370.8 458.5 372.5C455.8 374.3 447.6 379.6 440.4 384.3L427.3 392.8L406.4 379.4ZM321.0 231.4C314.1 227.3 302.9 220.3 296.0 216.1C289.1 211.8 280.1 206.3 276.0 203.9C270.7 200.8 265.4 196.3 257.8 188.4C197.7 126.4 105.9 115.6 36.0 162.3C26.7 168.4 17.7 175.5 8.4 183.7C4.4 187.2 0.9 190.0 0.6 190.0C0.3 190.0 0.0 154.0 0.0 110.0L0.0 29.9L4.8 27.9C100.2 -13.7 214.2 -7.9 301.0 42.8C357.4 75.8 404.0 127.6 421.4 176.8L424.0 184.0L420.2 186.3C413.4 190.6 375.7 213.6 363.0 221.2C356.1 225.3 346.8 231.0 342.3 233.8C337.7 236.7 333.9 239.0 333.8 239.0C333.6 239.0 327.9 235.6 321.0 231.4ZM489.5 220.1C447.5 194.7 431.6 184.9 431.1 184.5C430.3 183.6 436.5 168.0 442.2 156.5C475.6 89.7 550.1 32.0 630.0 11.1C699.0 -7.0 767.6 -2.7 840.1 24.1L854.0 29.2L854.0 109.6C854.0 153.8 853.7 190.0 853.4 190.0C853.1 190.0 849.8 187.4 846.2 184.1C793.5 137.8 735.6 123.1 675.0 140.5C645.3 149.0 621.5 163.4 597.7 187.2L584.8 199.9L566.2 211.3C555.9 217.6 546.1 223.5 544.3 224.6C542.6 225.6 536.6 229.3 531.0 232.8C525.5 236.2 520.8 239.0 520.7 239.0C520.6 238.9 506.6 230.5 489.5 220.1Z"/><path fill="var(--mark-b,#E5131E)" fill-rule="evenodd" d="M88.6 365.2C88.3 364.9 88.0 350.6 88.0 333.3L88.0 302.0L174.2 302.0L260.4 302.0L288.7 320.6C313.8 337.1 316.9 339.4 315.3 340.5C314.3 341.2 309.2 344.4 304.0 347.5C298.8 350.6 290.3 356.0 285.1 359.4L275.6 365.5L182.4 365.7C131.1 365.7 88.9 365.6 88.6 365.2ZM593.8 365.3L578.1 364.9L561.8 354.9C545.2 344.6 538.0 339.9 538.0 339.5C538.0 339.3 546.2 333.9 556.2 327.4C566.3 320.9 579.1 312.6 584.7 308.8L594.9 302.0L680.5 302.0L766.0 302.0L766.0 334.0L766.0 366.0L687.8 365.8C644.7 365.7 602.4 365.4 593.8 365.3ZM376.5 272.1C361.7 262.2 349.4 253.8 349.3 253.3C349.1 252.9 354.5 249.1 361.3 244.9C368.0 240.7 382.8 231.5 394.1 224.3C425.3 204.6 426.7 203.8 429.2 205.1C430.4 205.8 439.1 211.1 448.4 217.0C457.8 222.9 473.6 232.7 483.5 239.0C493.4 245.2 502.6 250.9 503.9 251.7L506.3 253.2L478.4 271.6C463.1 281.7 450.2 290.0 449.8 290.0C449.4 290.0 444.2 286.9 438.2 283.1L427.3 276.2L416.2 283.1C410.0 286.9 404.7 290.0 404.3 290.0C403.8 290.0 391.4 281.9 376.5 272.1Z"/></symbol></svg>
+<aside class="side">
+  <a class="logo" href="#cover"><svg aria-hidden="true"><use href="#mark"/></svg><span><b>ЭНСИС</b><small>Брендбук · v1.0</small></span></a>
+  <nav aria-label="Разделы брендбука">
+    <ol>
+      <li><a href="#idea"><span>01</span>Идея</a></li>
+      <li><a href="#logo"><span>02</span>Логотип</a></li>
+      <li><a href="#color"><span>03</span>Цвет</a></li>
+      <li><a href="#type"><span>04</span>Типографика</a></li>
+      <li><a href="#graphics"><span>05</span>Графика</a></li>
+      <li><a href="#grid"><span>06</span>Сетка</a></li>
+      <li><a href="#components"><span>07</span>Компоненты</a></li>
+      <li><a href="#voice"><span>08</span>Тон</a></li>
+      <li><a href="#apps"><span>09</span>Носители</a></li>
+      <li><a href="#site"><span>10</span>Видение сайта</a></li>
+      <li><a href="#assumptions"><span>11</span>Допущения</a></li>
+    </ol>
+  </nav>
+  <div class="side-cta">
+    <a href="site-concept.html">Открыть прототип сайта <span>→</span></a>
+    <p>Рабочая страница в новой айдентике. Блок «Системы» листается как в макете.</p>
+  </div>
+</aside>
+
+<main>
+<!-- COVER -->
+<section class="cover" id="cover">
+  <div class="wrap cover-top"><span>Брендбук и концепция сайта</span><span>Версия 1.0 · Ноябрь 2026</span></div>
+  <div class="wrap">
+    <svg class="cover-mark" aria-hidden="true"><use href="#mark"/></svg>
+    <h1>ЭНСИС<span>Энергетические системы</span></h1>
+    <p>Правила визуального языка компании и предложение по новому сайту. Документ для команды, подрядчиков и всех, кто делает материалы от имени ЭНСИС.</p>
+    <div class="cover-bus" aria-hidden="true"><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- 01 IDEA -->
+<section class="chapter" id="idea">
+  <div class="wrap">
+    <header class="ch-head">
+      <span class="ch-num">01</span>
+      <h2 class="ch-title">Идея и позиционирование</h2>
+      <p class="ch-lead">ЭНСИС соединяет то, что обычно делят между тремя подрядчиками: монтаж, наладку и поставку оборудования.</p>
+    </header>
+
+    <p class="manifest">Бренд строится вокруг образа <em>узла</em>: точки, в которой сходятся линии, а энергия становится управляемой.</p>
+    <p class="muted" style="max-width:62ch;margin-top:1.5rem">Знак компании уже несёт эту идею. Две дуги, похожие на зеркальные «Э» и «С», сходятся в центре, а синие и красные шины проходят через узел, как линии через подстанцию. Мы не меняем знак, а делаем его основой всей системы: шины становятся графическим элементом, ромб в центре становится маркером, а точка схождения становится главным смыслом.</p>
+
+    <div class="grid-3 pillars sub">
+      <div class="pillar"><span class="label">Опора 01</span><h4>Один ответственный</h4><p>СМР, ПНР и поставка в одних руках. Заказчику не нужно стыковать подрядчиков между собой.</p></div>
+      <div class="pillar"><span class="label">Опора 02</span><h4>Инженерная точность</h4><p>Говорим цифрами, классами напряжения и названиями систем. Без общих слов про «качество».</p></div>
+      <div class="pillar"><span class="label">Опора 03</span><h4>Допуски и ответственность</h4><p>СРО и лицензия до 500 кВ подтверждают, что компания работает в правовом поле.</p></div>
+    </div>
+
+    <div class="sub">
+      <h3 class="h3">Платформа бренда</h3>
+      <dl class="positioning">
+        <dt>Для кого</dt><dd>Сетевые и генерирующие компании, промышленные предприятия, генподрядчики и проектные институты.</dd>
+        <dt>Что делаем</dt><dd>Строительно-монтажные и пусконаладочные работы, поставка оборудования для подстанций и распределительных сетей.</dd>
+        <dt>Отличие</dt><dd>Полный цикл на объекте: от комплектации до ввода в эксплуатацию, включая системы РЗА, ПА, АСУ ТП и АИИСКУЭ.</dd>
+        <dt>Характер</dt><dd>Спокойный, точный, надёжный. Как хороший главный инженер.</dd>
+        <dt>Дескриптор</dt><dd>Энергетические системы</dd>
+        <dt>Слоган</dt><dd>«Профессиональные компетенции в энергетике» (из макета) или, как вариант, «Энергетические системы под ключ»</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 02 LOGO -->
+<section class="chapter" id="logo">
+  <div class="wrap">
+    <header class="ch-head">
+      <span class="ch-num">02</span>
+      <h2 class="ch-title">Логотип</h2>
+      <p class="ch-lead">Знак из макета переведён в вектор. Рядом с ним стоит короткое имя ЭНСИС и дескриптор, а юридическая форма «ООО» уходит в подвал и документы.</p>
+    </header>
+
+    <div class="grid-2">
+      <figure class="tile"><div class="logo-stage"><span class="lockup"><svg aria-hidden="true"><use href="#mark"/></svg><span><b>ЭНСИС</b><small>Энергетические системы</small></span></span></div>
+        <figcaption><b>Основная версия</b>На белом и светлом фоне</figcaption></figure>
+      <figure class="tile"><div class="logo-stage on-navy"><span class="lockup"><svg aria-hidden="true"><use href="#mark"/></svg><span><b>ЭНСИС</b><small>Энергетические системы</small></span></span></div>
+        <figcaption><b>Инверсная версия</b>На тёмно-синем: синие элементы белые, красный сохраняется</figcaption></figure>
+      <figure class="tile"><div class="logo-stage on-blue"><span class="lockup"><svg aria-hidden="true"><use href="#mark"/></svg><span><b>ЭНСИС</b><small>Энергетические системы</small></span></span></div>
+        <figcaption><b>Белая монохромная</b>На фирменном синем и фото</figcaption></figure>
+      <figure class="tile"><div class="logo-stage on-paper mono-dark"><span class="lockup"><svg aria-hidden="true"><use href="#mark"/></svg><span><b>ЭНСИС</b><small>Энергетические системы</small></span></span></div>
+        <figcaption><b>Чёрная монохромная</b>Печать в одну краску, факс, гравировка</figcaption></figure>
+    </div>
+
+    <div class="grid-2 sub">
+      <div>
+        <h3 class="h3">Охранное поле и размеры</h3>
+        <p class="muted">Модуль <b>x</b> равен высоте красной шины в знаке. Вокруг логотипа всегда свободное поле не меньше <b>x</b>. Внутри поля нет текста, краёв носителя и других знаков.</p>
+        <ul class="check" style="margin-top:1rem">
+          <li>Минимальная высота знака на экране: 24 px</li>
+          <li>Минимальная высота знака в печати: 8 мм</li>
+          <li>Дескриптор убирается, если высота знака меньше 32 px</li>
+          <li>Знак без надписи используется для иконки сайта, аватаров и пломб</li>
+        </ul>
+        <div class="downloads">
+          <a href="assets/ensys-mark-color.svg" download>↓ Знак, цвет (SVG)</a>
+          <a href="assets/ensys-mark-white.svg" download>↓ Знак, инверсия (SVG)</a>
+          <a href="assets/ensys-mark-mono.svg" download>↓ Знак, чёрный (SVG)</a>
+          <a href="assets/ensys-mark-mono-white.svg" download>↓ Знак, белый (SVG)</a>
+        </div>
+      </div>
+      <div class="construct"><div class="construct-box"><span class="lockup"><svg aria-hidden="true"><use href="#mark"/></svg><span><b>ЭНСИС</b><small>Энергетические системы</small></span></span></div></div>
+    </div>
+
+    <div class="sub">
+      <h3 class="h3">Так делать нельзя</h3>
+      <div class="grid-4">
+        <figure class="tile"><div class="dont"><svg style="transform:scaleX(1.5)" aria-hidden="true"><use href="#mark"/></svg></div><figcaption>Растягивать и сжимать</figcaption></figure>
+        <figure class="tile"><div class="dont" style="--mark-a:#2a9d5c;--mark-b:#f2b705"><svg aria-hidden="true"><use href="#mark"/></svg></div><figcaption>Менять цвета знака</figcaption></figure>
+        <figure class="tile"><div class="dont"><svg style="filter:drop-shadow(4px 6px 4px rgb(0 0 0 / 50%));transform:rotate(-12deg)" aria-hidden="true"><use href="#mark"/></svg></div><figcaption>Поворачивать и добавлять тени</figcaption></figure>
+        <figure class="tile"><div class="dont" style="background:url(assets/hero.jpg) center/cover"><svg aria-hidden="true"><use href="#mark"/></svg></div><figcaption>Ставить цветной знак на пёстрое фото</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 COLOR -->
+<section class="chapter" id="color">
+  <div class="wrap">
+    <header class="ch-head">
+      <span class="ch-num">03</span>
+      <h2 class="ch-title">Цвет</h2>
+      <p class="ch-lead">Синий и красный взяты из знака. Тёмно-синий заменяет графитовый фон макета: он остаётся в семье синего и не спорит с фото подстанций.</p>
+    </header>
+    <div class="swatches">
+      <div class="swatch swatch-big" style="background:var(--blue);color:#fff"><div><span class="label" style="color:var(--sky)">Основной</span><h4 style="font-size:2.2rem;margin-top:.5rem">Энсис синий</h4><p style="margin-top:.5rem">Цвет знака, заголовков на светлом фоне, основных кнопок и ссылок.</p></div>
+        <dl><dt>HEX</dt><dd>#014793</dd><dt>RGB</dt><dd>1 71 147</dd><dt>CMYK</dt><dd>100 75 0 15</dd><dt>Pantone</dt><dd>≈ 2945 C</dd></dl></div>
+      <div class="swatch" style="background:var(--navy);color:#fff"><div><span class="label" style="color:var(--on-dark-muted)">Основной</span><h4>Ночь</h4><p>Тёмные секции, подвал, обложки.</p></div><dl><dt>HEX</dt><dd>#0A2240</dd><dt>RGB</dt><dd>10 34 64</dd><dt>CMYK</dt><dd>100 80 30 60</dd></dl></div>
+      <div class="swatch" style="background:var(--red);color:#fff"><div><span class="label" style="color:#ffd0d2">Акцент</span><h4>Сигнал</h4><p>Только акценты: маркеры, активное состояние, шина. Не больше 5% площади.</p></div><dl><dt>HEX</dt><dd>#E5131E</dd><dt>RGB</dt><dd>229 19 30</dd><dt>CMYK</dt><dd>0 100 95 0</dd></dl></div>
+      <div class="swatch" style="background:var(--sky);color:var(--navy)"><div><span class="label" style="color:var(--blue)">Поддержка</span><h4>Небо</h4><p>Текст-акцент на тёмном, подсветки.</p></div><dl><dt>HEX</dt><dd>#C5E2FF</dd><dt>RGB</dt><dd>197 226 255</dd></dl></div>
+      <div class="swatch" style="background:var(--paper);color:var(--ink);border-color:var(--line)"><div><span class="label">Поддержка</span><h4>Бумага</h4><p>Светлые подложки, поля форм.</p></div><dl><dt>HEX</dt><dd>#F3F7FB</dd><dt>Линии</dt><dd>#D6E2EE</dd></dl></div>
+    </div>
+    <div class="grid-2" style="margin-top:1.25rem">
+      <div class="swatch" style="background:var(--ink);color:#fff;min-height:9rem"><div><span class="label" style="color:var(--on-dark-muted)">Текст</span><h4>Графит</h4></div><dl><dt>HEX</dt><dd>#142233</dd><dt>Роль</dt><dd>основной текст</dd></dl></div>
+      <div class="swatch" style="background:var(--steel);color:#fff;min-height:9rem"><div><span class="label" style="color:#cfd9e3">Текст</span><h4>Сталь</h4></div><dl><dt>HEX</dt><dd>#4D6072</dd><dt>Роль</dt><dd>второстепенный текст</dd></dl></div>
+    </div>
+
+    <div class="grid-2 sub">
+      <div>
+        <h3 class="h3">Пропорции</h3>
+        <p class="muted">Белый и бумага дают воздух, синий держит бренд, красный работает как сигнальная лампа.</p>
+        <div class="ratio"><span style="flex:55;background:var(--paper);border:1px solid var(--line)">55%</span><span style="flex:25;background:var(--blue);color:#fff">25%</span><span style="flex:15;background:var(--navy);color:#fff">15%</span><span style="flex:5;background:var(--red);color:#fff">5</span></div>
+      </div>
+      <div>
+        <h3 class="h3">Контраст (WCAG)</h3>
+        <table class="contrast">
+          <thead><tr><th>Пара</th><th>Контраст</th><th>Где можно</th></tr></thead>
+          <tbody>
+            <tr><td><span class="chip" style="background:#fff;color:var(--blue);border:1px solid var(--line)">Синий</span></td><td>9.0 : 1</td><td class="ok">Любой текст</td></tr>
+            <tr><td><span class="chip" style="background:var(--navy);color:var(--sky)">Небо</span></td><td>11.9 : 1</td><td class="ok">Любой текст</td></tr>
+            <tr><td><span class="chip" style="background:#fff;color:var(--steel);border:1px solid var(--line)">Сталь</span></td><td>6.5 : 1</td><td class="ok">Любой текст</td></tr>
+            <tr><td><span class="chip" style="background:#fff;color:var(--red);border:1px solid var(--line)">Сигнал</span></td><td>4.7 : 1</td><td class="lim">Текст от 16 px</td></tr>
+            <tr><td><span class="chip" style="background:var(--navy);color:var(--red)">Сигнал</span></td><td>3.4 : 1</td><td class="lim">Только графика</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 TYPE -->
+<section class="chapter" id="type">
+  <div class="wrap">
+    <header class="ch-head">
+      <span class="ch-num">04</span>
+      <h2 class="ch-title">Типографика</h2>
+      <p class="ch-lead">Две гарнитуры с хорошей кириллицей, обе бесплатные (Google Fonts, лицензия OFL). Segoe UI из макета есть не на всех устройствах, поэтому сайт выглядел бы по-разному.</p>
+    </header>
+    <div class="type-specimen">
+      <div class="specimen"><span class="label">Основная · Onest</span><div class="big">Аа</div><p class="abc">АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ<br>абвгдеёжзийклмнопрстуфхцчшщъыьэюя<br>0123456789 — «» № ° %</p><p class="muted" style="margin-top:1rem;font-size:.9rem">Заголовки, текст, интерфейс. Начертания 400, 500, 600, 700, 800.</p></div>
+      <div class="specimen mono-s"><span class="label">Техническая · IBM Plex Mono</span><div class="big">500 кВ</div><p class="abc">РЗА · ПА · АСУ ТП · ССПИ<br>01 / 06 — 0,4–500 кВ</p><p style="margin-top:1rem;font-size:.9rem;color:var(--on-dark-muted)">Номера разделов, метки, коды систем, классы напряжения. Только короткие строки, всегда прописными или цифрами.</p></div>
+    </div>
+    <div class="scale sub">
+      <div class="scale-row"><span class="meta">Display<br>Onest 800 · 92/90<br>трекинг −4.5%</span><span class="t-display">Энергетические системы</span></div>
+      <div class="scale-row"><span class="meta">H2<br>Onest 700 · 64/66<br>трекинг −4%</span><span class="t-h2">Полный цикл работ</span></div>
+      <div class="scale-row"><span class="meta">H3<br>Onest 700 · 32/35</span><span class="t-h3">Пусконаладочные работы</span></div>
+      <div class="scale-row"><span class="meta">Eyebrow<br>Plex Mono 500 · 13<br>трекинг +8%</span><span class="t-eyebrow">02 — Системы</span></div>
+      <div class="scale-row"><span class="meta">Lead<br>Onest 400 · 21/31</span><span class="t-lead">Строим, налаживаем и комплектуем подстанции и распределительные сети.</span></div>
+      <div class="scale-row"><span class="meta">Body<br>Onest 400 · 17/27</span><span class="t-body">Испытания оборудования, настройка устройств РЗА, АВР и телемеханики перед вводом в эксплуатацию. Длина строки от 45 до 75 знаков.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 GRAPHICS -->
+<section class="chapter" id="graphics">
+  <div class="wrap">
+    <header class="ch-head">
+      <span class="ch-num">05</span>
+      <h2 class="ch-title">Графический язык</h2>
+      <p class="ch-lead">Все элементы выведены из знака и из инженерной графики: шины, узлы, сетка чертежа.</p>
+    </header>
+    <div class="grid-2">
+      <figure class="tile"><div class="motif on-paper"><div class="bus"><i></i><i></i><i></i></div></div><figcaption><b>Шины</b>Горизонтальные полосы из знака. Разделители, обложки, края носителей. Красная шина всегда короче синей.</figcaption></figure>
+      <figure class="tile"><div class="motif on-paper"><div class="nodes"><i></i><b></b><i></i><b></b><i></i><b></b><i class="r"></i></div></div><figcaption><b>Узел</b>Ромб из центра знака. Маркер списков, точки этапов, текущее состояние (красный).</figcaption></figure>
+      <figure class="tile"><div class="motif blueprint"><span class="t-eyebrow" style="color:var(--sky)">Сетка 24 px</span></div><figcaption><b>Чертёжная сетка</b>Фон тёмных секций с низкой прозрачностью. Напоминает инженерный лист, но не мешает чтению.</figcaption></figure>
+      <figure class="tile"><div class="photo"><span>Реальные объекты,<br>холодный тон</span></div><figcaption><b>Фотография</b>Свои объекты, аэросъёмка, крупные планы оборудования. Тонировка в сторону «Ночи», без стоковых людей в касках.</figcaption></figure>
+    </div>
+    <div class="sub grid-2" style="align-items:center">
+      <div><h3 class="h3">Иконки</h3><p class="muted">Линейные, толщина линии 2 px на сетке 48 px, скруглённые стыки не используются. Одна деталь на иконку выделяется красным.</p></div>
+      <div class="icons">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 40h32M12 40V18l12-8 12 8v22M18 40V28h12v12M24 10V4"/><path d="M20 20h8" stroke="#E5131E"/></svg>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="10" width="36" height="26" rx="2"/><path d="M12 28l6-8 6 5 6-9 6 6"/><path d="M16 42h16"/><circle cx="36" cy="16" r="2" fill="#E5131E" stroke="none"/></svg>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 14l18-8 18 8v20l-18 8-18-8z"/><path d="M6 14l18 8 18-8M24 22v20"/><path d="M15 10l18 8" stroke="#E5131E"/></svg>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4h20l10 10v30H12z"/><path d="M32 4v10h10"/><path d="M27 18l-6 10h7l-4 9" stroke="#E5131E"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 GRID -->
+<section class="chapter" id="grid">
+  <div class="wrap">
+    <header class="ch-head">
+      <span class="ch-num">06</span>
+      <h2 class="ch-title">Сетка и отступы</h2>
+      <p class="ch-lead">12 колонок, контейнер 1216 px, шаг отступов 8 px. Большие заголовки слева, пояснения справа, как в макете.</p>
+    </header>
+    <div class="gridviz" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="grid-3 sub">
+      <div><span class="label">Десктоп ≥ 1120</span><p style="margin-top:.4rem">12 колонок · поле 24 px · отступ от края до 68 px</p></div>
+      <div><span class="label">Планшет 640–1120</span><p style="margin-top:.4rem">8 колонок · поле 20 px · меню в бургере</p></div>
+      <div><span class="label">Телефон &lt; 640</span><p style="margin-top:.4rem">4 колонки · поле 16 px · кнопки на всю ширину</p></div>
+    </div>
+    <div class="sub">
+      <h3 class="h3">Шкала отступов</h3>
+      <div class="spacing">
+        <div><i style="width:8px;height:8px"></i>8</div><div><i style="width:16px;height:16px"></i>16</div><div><i style="width:24px;height:24px"></i>24</div><div><i style="width:32px;height:32px"></i>32</div><div><i style="width:48px;height:48px"></i>48</div><div><i style="width:64px;height:64px"></i>64</div><div><i style="width:96px;height:96px"></i>96</div><div><i style="width:128px;height:128px"></i>128 · секция</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 COMPONENTS -->
+<section class="chapter" id="components">
+  <div class="wrap">
+    <header class="ch-head">
+      <span class="ch-num">07</span>
+      <h2 class="ch-title">Компоненты</h2>
+      <p class="ch-lead">Базовый набор для сайта. Скругление 6 px, высота элементов управления 48–50 px, видимый фокус для клавиатуры.</p>
+    </header>
+    <div class="grid-2">
+      <div class="comp"><span class="label">Кнопки на светлом</span>
+        <div class="row" style="margin-top:1.25rem"><a class="btn btn-primary" href="#components">Запросить предложение <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 10h13M11 4l6 6-6 6"/></svg></a><a class="btn btn-secondary" href="#components">Услуги</a></div></div>
+      <div class="comp dark-bg"><span class="label">Кнопки на тёмном</span>
+        <div class="row" style="margin-top:1.25rem"><a class="btn btn-light" href="#components">Запросить предложение <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 10h13M11 4l6 6-6 6"/></svg></a><a class="btn btn-ghost" href="#components">Услуги и системы</a></div></div>
+      <div class="comp"><span class="label">Поля формы</span>
+        <div style="display:grid;gap:1rem;margin-top:1.25rem">
+          <label class="field">Имя<input value="Иван Петров"></label>
+          <label class="field">Телефон · фокус<input class="focus" value="+7 900"></label>
+          <label class="field">Объект · ошибка<input class="error" value=""><span class="err">Опишите объект и задачу</span></label>
+        </div></div>
+      <div class="svc"><span class="label">01 · Карточка услуги</span><h4>ПНР<small>Пусконаладочные работы</small></h4><ul><li>Испытания оборудования</li><li>Настройка устройств РЗА, АВР и телемеханики</li><li>Подготовка к вводу в эксплуатацию</li></ul></div>
+      <div class="comp dark-bg"><span class="label">Документ</span>
+        <div class="doc" style="margin-top:1.25rem"><svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4h20l10 10v34H12z"/><path d="M32 4v10h10"/><path d="M27 20l-6 10h7l-4 9" stroke="#E5131E" stroke-width="2"/></svg><div><h4>Лицензия ЭТД до 500 кВ</h4><p>Класс напряжения до 500 кВ</p></div><span class="tagline">Запросить</span></div>
+        <div class="row" style="margin-top:1.25rem"><span class="pill">Монтаж</span><span class="pill">Наладка</span><span class="pill">Испытания</span></div></div>
+      <div class="comp dark-bg" style="background:var(--navy-900)"><span class="label">Карточки «Системы» (стопка)</span>
+        <div class="sys-demo" style="margin-top:1.25rem"><div><span class="mono">01</span><h4>РЗА</h4></div><div><span class="mono">02</span><h4>ПА</h4></div><div><div><span class="mono">03</span><h4>Связь</h4></div><p style="font-size:.95rem">Каналы связи для обмена данными между энергообъектами</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 VOICE -->
+<section class="chapter" id="voice">
+  <div class="wrap">
+    <header class="ch-head">
+      <span class="ch-num">08</span>
+      <h2 class="ch-title">Тон коммуникации</h2>
+      <p class="ch-lead">Говорим как инженер с заказчиком: коротко, по делу, с цифрами. Уважительно, без канцелярита и рекламного пафоса.</p>
+    </header>
+    <div class="grid-3">
+      <div class="pillar"><span class="label">Принцип 01</span><h4>Конкретно</h4><p>Класс напряжения, название системы, срок. Вместо «широкого спектра услуг» перечисляем работы.</p></div>
+      <div class="pillar"><span class="label">Принцип 02</span><h4>Спокойно</h4><p>Без восклицательных знаков, капслока и превосходных степеней. Уверенность видна по фактам.</p></div>
+      <div class="pillar"><span class="label">Принцип 03</span><h4>Понятно</h4><p>Аббревиатуру расшифровываем при первом упоминании. Пишем на «вы», глаголами действия.</p></div>
+    </div>
+    <div class="voice-table sub">
+      <div><span class="label">Не так</span>Мы готовы к сотрудничеству!</div>
+      <div><span class="label">А так</span>Подключимся на любом этапе: от комплектации до пусконаладки.</div>
+      <div><span class="label">Не так</span>Оказываем широкий спектр высококачественных услуг в сфере энергетики.</div>
+      <div><span class="label">А так</span>Монтируем КТП и распределительные устройства, налаживаем РЗА и телемеханику, поставляем оборудование.</div>
+      <div><span class="label">Не так</span>Индивидуальный подход к каждому клиенту.</div>
+      <div><span class="label">А так</span>Укажите объект, состав работ и сроки. Ответим с расчётом и графиком.</div>
+    </div>
+    <div class="grid-2 sub">
+      <div><h3 class="h3">Пишем</h3><ul class="check"><li>«кВ», «ПС 110 кВ», «0,4–10 кВ»: с неразрывным пробелом</li><li>Кавычки «ёлочки», тире «—», буква «ё»</li><li>Название компании: ЭНСИС, в документах ООО «ЭНСИС»</li></ul></div>
+      <div><h3 class="h3">Избегаем</h3><ul class="cross"><li>«Лидер рынка», «лучшие специалисты» без подтверждения</li><li>Англицизмы там, где есть русское слово</li><li>Восклицательные знаки в заголовках</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 APPLICATIONS -->
+<section class="chapter" id="apps">
+  <div class="wrap">
+    <header class="ch-head">
+      <span class="ch-num">09</span>
+      <h2 class="ch-title">Носители</h2>
+      <p class="ch-lead">Как система работает за пределами сайта. Контактные данные на макетах условные.</p>
+    </header>
+    <div class="grid-2">
+      <figure class="tile"><div class="mock-stage" style="gap:1.25rem">
+        <div class="bcard front"><div style="display:flex;align-items:center;gap:.6rem"><svg aria-hidden="true"><use href="#mark"/></svg><b>ЭНСИС</b></div><div class="bus-mini"><i></i><i></i></div><span class="mono" style="align-self:end;color:var(--sky)">en-sys.ru</span></div>
+        <div class="bcard back"><div><b>Иван Петров</b><p>Главный инженер проекта</p></div><div><p>+7 (000) 000-00-00<br>info@en-sys.ru</p></div><svg style="position:absolute;right:1.2rem;top:1.2rem;width:2rem" aria-hidden="true"><use href="#mark"/></svg></div>
+      </div><figcaption><b>Визитка 90 × 50 мм</b>Лицо на «Ночи» с шинами, оборот белый</figcaption></figure>
+      <figure class="tile"><div class="mock-stage"><div class="letter"><div class="letter-head"><span><svg aria-hidden="true"><use href="#mark"/></svg>ЭНСИС</span><span>ООО «ЭНСИС»<br>info@en-sys.ru</span></div><div class="lines"><i style="width:40%"></i><i style="width:30%"></i></div><div class="lines"><i></i><i></i><i style="width:85%"></i><i></i><i style="width:60%"></i></div><div class="lines"><i></i><i style="width:90%"></i><i style="width:70%"></i></div><div class="foot"><span>ИНН · ОГРН</span><span>en-sys.ru</span></div></div></div><figcaption><b>Фирменный бланк A4</b>Синяя шина под шапкой, реквизиты в подвале</figcaption></figure>
+      <figure class="tile"><div class="mock-stage"><div class="slide"><div class="slide-in"><svg aria-hidden="true"><use href="#mark"/></svg><div><span class="mono">Коммерческое предложение</span><h4 style="margin-top:.5rem">Наладка РЗА на ПС 110 кВ</h4></div></div></div></div><figcaption><b>Обложка презентации и КП</b>Фото объекта, тонировка «Ночь», крупный заголовок</figcaption></figure>
+      <figure class="tile"><div class="mock-stage"><div class="helmet-row"><div class="avatar"><svg aria-hidden="true"><use href="#mark"/></svg></div><div class="sig"><p><b>Иван Петров</b><br><span class="muted">Главный инженер проекта</span></p><div class="sig-in" style="margin-top:.9rem"><svg aria-hidden="true"><use href="#mark"/></svg><span class="muted" style="font-size:.8rem">ЭНСИС · Энергетические системы<br>+7 (000) 000-00-00 · en-sys.ru</span></div></div></div></div><figcaption><b>Аватар и подпись в письме</b>Знак без надписи на «Ночи»; подпись без картинок, только текст и знак</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 10 SITE -->
+<section class="chapter dark" id="site">
+  <div class="wrap">
+    <header class="ch-head">
+      <span class="ch-num">10</span>
+      <h2 class="ch-title">Видение сайта</h2>
+      <p class="ch-lead">Одностраничный сайт-визитка для B2B-заказчика, который за минуту понимает: что делаете, до какого напряжения, есть ли допуски и как отправить запрос.</p>
+    </header>
+
+    <div class="preview-cta" style="background:rgb(255 255 255 / 6%)">
+      <div>
+        <span class="label">Прототип</span>
+        <h3 class="h3" style="margin-top:.5rem;font-size:2rem">Рабочая страница в новой айдентике</h3>
+        <p class="muted" style="margin-bottom:1.5rem">Адаптивная вёрстка, видео в первом экране, форма запроса. Блок «Системы» сохраняет механику макета: секция закрепляется, карточки выезжают по прокрутке, есть кнопки «назад/далее» и счётчик.</p>
+        <a class="btn btn-light" href="site-concept.html">Открыть прототип <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 10h13M11 4l6 6-6 6"/></svg></a>
+      </div>
+      <img src="assets/preview-desktop.jpg" alt="Первый экран прототипа сайта ЭНСИС">
+    </div>
+
+    <div class="sub">
+      <h3 class="h3">Структура страницы</h3>
+      <div class="sitemap">
+        <div class="sm-row"><span class="mono">00</span><b>Шапка</b><p>Логотип, 5 разделов, почта и кнопка «Запросить КП», которая видна всегда.</p></div>
+        <div class="sm-row"><span class="mono">01</span><b>Первый экран</b><p>Видео подстанции, заголовок с обещанием, две кнопки и полоса фактов: до 500 кВ, 3 в 1, 6 систем, СРО.</p></div>
+        <div class="sm-row"><span class="mono">02</span><b>Услуги</b><p>СМР, ПНР, Поставка: карточки с расшифровкой и списком работ.</p></div>
+        <div class="sm-row keep"><span class="mono">03</span><b>Системы <span class="badge">механика макета</span></b><p>Закреплённая секция, карточки выезжают по скроллу. Новое: номера, прогресс-шкала, описание внутри активной карточки, виды работ.</p></div>
+        <div class="sm-row"><span class="mono">04</span><b>Как работаем</b><p>Новый блок: 6 этапов от запроса до ввода. Снимает вопрос «что будет после заявки».</p></div>
+        <div class="sm-row"><span class="mono">05</span><b>Документы</b><p>СРО и лицензия карточками с действием «Запросить» (в будущем PDF-превью).</p></div>
+        <div class="sm-row"><span class="mono">06</span><b>Контакты</b><p>Почта, телефон и форма с полем «Организация» и согласием на обработку данных.</p></div>
+        <div class="sm-row"><span class="mono">07</span><b>Призыв и подвал</b><p>Финальная кнопка, реквизиты, политика конфиденциальности.</p></div>
+      </div>
+    </div>
+
+    <div class="sub preview-shots">
+      <figure><img src="assets/preview-systems.jpg" alt="Блок «Системы» в прототипе: закреплённая секция с выезжающими карточками"><figcaption>«Системы»: та же механика, новый стиль</figcaption></figure>
+      <figure><img src="assets/preview-mobile.jpg" alt="Первый экран прототипа на телефоне"><figcaption>Телефон, 390 px</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="site-diff">
+  <div class="wrap">
+    <h3 class="h3" style="font-size:2rem">Что меняется относительно макета</h3>
+    <table class="compare" style="margin-top:1.5rem">
+      <thead><tr><th>Блок</th><th>В макете</th><th>Предложение</th></tr></thead>
+      <tbody>
+        <tr><td>Первый экран</td><td>Заголовок и слоган, кнопка «Команда и опыт» раскрывает одну фразу.</td><td>Обещание «под ключ», понятный подзаголовок, кнопка запроса и полоса фактов. Посетитель сразу видит класс напряжения и допуски.</td></tr>
+        <tr><td>Шапка</td><td>Красный e-mail справа, пункт «Команда и опыт» ведёт в первый экран.</td><td>Синяя кнопка «Запросить КП» как главное действие, красный остаётся только для акцентов. Пункты меню соответствуют блокам.</td></tr>
+        <tr><td>Услуги</td><td>Аббревиатуры СМР и ПНР без расшифровки.</td><td>Расшифровка под заголовком, список работ, иконка. Понятно и не-инженеру из закупок.</td></tr>
+        <tr><td>Системы</td><td>Механика листания, описание отдельной строкой под карточками.</td><td>Механика та же. Добавлены номера, прогресс, описание и виды работ в активной карточке, круглые кнопки со стрелками.</td></tr>
+        <tr><td>Документы</td><td>Два названия без действий.</td><td>Карточки с иконкой и действием «Запросить». Дальше: номера документов и PDF.</td></tr>
+        <tr><td>Контакты</td><td>Форма готовит письмо в почтовом клиенте.</td><td>Добавлены «Организация» и согласие по 152-ФЗ. На проде нужна отправка на сервер, так как у многих на рабочих ПК почтовый клиент не настроен.</td></tr>
+        <tr><td>Тёмный фон</td><td>Графитовый #30353B.</td><td>Тёмно-синий «Ночь» #0A2240: в семье бренда и спокойнее рядом с фото.</td></tr>
+        <tr><td>Шрифт</td><td>Segoe UI (есть только на Windows).</td><td>Onest и IBM Plex Mono: одинаково на всех устройствах.</td></tr>
+        <tr><td>Вес страницы</td><td>14 МБ в одном файле: видео и картинки внутри HTML.</td><td>Видео, постер и логотип отдельными файлами, знак в SVG (4 КБ вместо 430 КБ PNG). Видео стоит дополнительно сжать до 2–3 МБ.</td></tr>
+        <tr><td>Подвал</td><td>Отсутствует.</td><td>Реквизиты, навигация, политика конфиденциальности. Для тендеров это важный признак надёжности.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2 sub">
+      <div>
+        <h3 class="h3">Принципы UX</h3>
+        <ol class="ux">
+          <li><span class="mono">01</span><div><b>Одно главное действие</b><p>«Запросить предложение» есть в шапке, на первом экране, в контактах и в финале.</p></div></li>
+          <li><span class="mono">02</span><div><b>Факты раньше слов</b><p>Класс напряжения и допуски видны без прокрутки.</p></div></li>
+          <li><span class="mono">03</span><div><b>Доступность</b><p>Контраст по WCAG AA, фокус с клавиатуры, учёт «уменьшить движение»: видео и анимация отключаются.</p></div></li>
+          <li><span class="mono">04</span><div><b>Мобильный в приоритете</b><p>Кнопки на всю ширину, меню в бургере, «Системы» листаются и на телефоне.</p></div></li>
+        </ol>
+      </div>
+      <div>
+        <h3 class="h3">Следующие шаги</h3>
+        <ol class="ux">
+          <li><span class="mono">01</span><div><b>Раздел «Объекты»</b><p>3–6 реализованных проектов: фото, класс напряжения, состав работ. Самый сильный аргумент для заказчика.</p></div></li>
+          <li><span class="mono">02</span><div><b>Отправка формы на сервер</b><p>С уведомлением на почту и защитой от спама.</p></div></li>
+          <li><span class="mono">03</span><div><b>Страницы систем</b><p>Ссылки из карточек «Системы» могут вести на отдельные страницы для SEO.</p></div></li>
+          <li><span class="mono">04</span><div><b>Шрифты на своём сервере</b><p>Вместо Google Fonts, чтобы не зависеть от внешних сервисов.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 ASSUMPTIONS -->
+<section class="chapter dark" id="assumptions">
+  <div class="wrap">
+    <header class="ch-head">
+      <span class="ch-num">11</span>
+      <h2 class="ch-title">Допущения и что нужно от вас</h2>
+      <p class="ch-lead">Всё, что я не нашёл в макете и дополнил сам. Это стоит проверить перед запуском.</p>
+    </header>
+    <ul class="todo">
+      <li>Телефон, ИНН и ОГРН в прототипе условные (+7 000…, нули). Нужны настоящие.</li>
+      <li>Виды работ в карточках «Системы» (монтаж, наладка, испытания и т. п.) я предположил. Их нужно сверить.</li>
+      <li>«Лицензия ЭТД до 500 кВ»: возможно, имеется в виду регистрация ЭТЛ (электролаборатории) в Ростехнадзоре. Стоит уточнить формулировку.</li>
+      <li>Слоган «под ключ» и этапы работы — моё предложение. Исходный слоган из макета тоже подходит.</li>
+      <li>Знак векторизован автоматически по PNG из макета. Если есть исходник от дизайнера (AI, CDR, SVG), лучше взять его.</li>
+      <li>Pantone и CMYK указаны приблизительно. Для печати нужно подтверждение у типографии.</li>
+      <li>Дескриптор «Энергетические системы» и сокращённое имя ЭНСИС в логотипе — моё предложение вместо «ООО «ЭНСИС»» в шапке.</li>
+    </ul>
+  </div>
+</section>
+<footer class="end"><div class="wrap">ЭНСИС · Брендбук v1.0 · 2026 · Файлы знака лежат в папке <code>assets/</code></div></footer>
+</main>
+
+<script>
+  const links = [...document.querySelectorAll('.side nav a')];
+  const targets = links.map(a => document.querySelector(a.hash));
+  let ticking = false;
+  function spy() {
+    ticking = false;
+    let cur = -1;
+    targets.forEach((t, i) => { if (t.getBoundingClientRect().top < innerHeight * .35) cur = i; });
+    links.forEach((a, i) => a.classList.toggle('active', i === cur));
+  }
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+  spy();
+</script>
+</body>
+</html>

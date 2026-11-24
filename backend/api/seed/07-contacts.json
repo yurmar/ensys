@@ -1,0 +1,109 @@
+{
+  "slug": "contacts",
+  "title": "Контакты и форма",
+  "sort": 7,
+  "schema": [
+    {
+      "key": "eyebrow",
+      "label": "Надзаголовок",
+      "type": "text"
+    },
+    {
+      "key": "title",
+      "label": "Заголовок",
+      "type": "text"
+    },
+    {
+      "key": "lead",
+      "label": "Вводный текст",
+      "type": "textarea"
+    },
+    {
+      "key": "email_label",
+      "label": "Подпись: почта",
+      "type": "text"
+    },
+    {
+      "key": "phone_label",
+      "label": "Подпись: телефон",
+      "type": "text"
+    },
+    {
+      "key": "form",
+      "label": "Форма заявки",
+      "type": "group",
+      "fields": [
+        {
+          "key": "title",
+          "label": "Заголовок формы",
+          "type": "text"
+        },
+        {
+          "key": "name_label",
+          "label": "Поле: имя",
+          "type": "text"
+        },
+        {
+          "key": "phone_label",
+          "label": "Поле: телефон",
+          "type": "text"
+        },
+        {
+          "key": "company_label",
+          "label": "Поле: организация",
+          "type": "text"
+        },
+        {
+          "key": "message_label",
+          "label": "Поле: объект и задача",
+          "type": "text"
+        },
+        {
+          "key": "message_placeholder",
+          "label": "Подсказка в поле задачи",
+          "type": "text"
+        },
+        {
+          "key": "consent",
+          "label": "Согласие на обработку данных",
+          "type": "text",
+          "max": 300
+        },
+        {
+          "key": "submit",
+          "label": "Кнопка отправки",
+          "type": "text"
+        },
+        {
+          "key": "success",
+          "label": "Сообщение об успехе",
+          "type": "text"
+        },
+        {
+          "key": "error",
+          "label": "Сообщение об ошибке",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "data": {
+    "eyebrow": "05 — Контакты",
+    "title": "Обсудим ваш объект",
+    "lead": "Укажите объект, состав работ и сроки. Ответим с расчётом и графиком.",
+    "email_label": "Почта",
+    "phone_label": "Телефон",
+    "form": {
+      "title": "Запрос предложения",
+      "name_label": "Имя",
+      "phone_label": "Телефон",
+      "company_label": "Организация",
+      "message_label": "Объект и задача",
+      "message_placeholder": "Например: ПС 110 кВ, наладка РЗА, срок до мая",
+      "consent": "Согласен на обработку персональных данных в соответствии с политикой конфиденциальности",
+      "submit": "Отправить запрос",
+      "success": "Заявка отправлена. Мы свяжемся с вами.",
+      "error": "Не удалось отправить заявку. Напишите нам на почту."
+    }
+  }
+}

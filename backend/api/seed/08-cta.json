@@ -1,0 +1,39 @@
+{
+  "slug": "cta",
+  "title": "Призыв к действию",
+  "sort": 8,
+  "schema": [
+    {
+      "key": "title",
+      "label": "Заголовок",
+      "type": "text"
+    },
+    {
+      "key": "text",
+      "label": "Текст",
+      "type": "textarea"
+    },
+    {
+      "key": "btn_label",
+      "label": "Кнопка: текст",
+      "type": "text"
+    },
+    {
+      "key": "btn_href",
+      "label": "Кнопка: ссылка",
+      "type": "url"
+    },
+    {
+      "key": "bg_url",
+      "label": "Фоновая картинка",
+      "type": "url"
+    }
+  ],
+  "data": {
+    "title": "Готовы к сотрудничеству",
+    "text": "Подключимся на любом этапе: от комплектации до пусконаладки.",
+    "btn_label": "Запросить предложение",
+    "btn_href": "#contacts",
+    "bg_url": "/assets/hero.jpg"
+  }
+}

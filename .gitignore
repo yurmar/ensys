@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.local/
+.DS_Store
+backend/api/config.php
+docs/*.zip
+docs/*.html
+*.log
+docs/brandbook/assets/*.mp4
